@@ -1,0 +1,10 @@
+Usuarios
+1,Juan
+2,Pedro
+3,Gabriel
+4,Santi
+Relaciones
+1,2,10
+1,3,8
+2,3,12
+3,4,7
