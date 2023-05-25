@@ -5,14 +5,15 @@
  */
 package Classes;
 
-import DataStructures.Edge;
 import DataStructures.List;
-import DataStructures.Vperson;
-import java.io.PrintWriter;
-import javax.swing.JOptionPane;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.BufferedReader;
+import java.io.PrintWriter;
+import javax.swing.JFileChooser;
+import static javax.swing.JFileChooser.APPROVE_OPTION;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileSystemView;
 
 /**
  *
@@ -20,143 +21,148 @@ import java.io.BufferedReader;
  */
 public class Util {
     
-    public void write_txt(List allPerson){
-        String str = "Usuarios\n";
-        if(allPerson.isEmpty() == false){
-            for(int x = 0; x < allPerson.len(); x++){
-                Vperson person = (Vperson) allPerson.get(x);
-                str = str + person.getVnum() + "," + person.getName() + "\n";
+
+    
+    public String ObtenerRutaTXT() {
+        String fileRoute; 
+        JFileChooser fi = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        
+        int option = fi.showOpenDialog(null);
+        
+        if (option == 0)
+        {
+            
+            fileRoute = fi.getSelectedFile().getAbsolutePath();
+            if (!fileRoute.endsWith("txt")) {
+                JOptionPane.showMessageDialog(null, "formato de archivo no valido, intente de nuevo");
             }
-            str = str + "Relaciones\n";
-            for(int x = 0; x < allPerson.len(); x++){
-                Vperson person = (Vperson) allPerson.get(x);
-                List auxList = person.getAdyList();
-                for(int y = 0; y < auxList.len(); y++){
-                    Edge edge = (Edge) auxList.get(y);
-                    str = str + edge.getStart().getVnum() + "," + edge.getEnd().getVnum() + "," + edge.getWeight() + "\n"; 
-                }
-            }
-        }             
-        try{
-            PrintWriter pw = new PrintWriter("C:\\Users\\Juan Diego\\Desktop\\Java\\Clases\\Proyecto1\\src\\TextFiles\\Persons.txt");
-            pw.print(str);
-            pw.close();
+            
+        } else
+        {
+            fileRoute = "";
         }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error: no se a escrito sobre el archivo correctamente");
-        }       
+        return fileRoute;
     }
     
-    public List read_users(){
+    public void WriteTxt(List allPerson,String fileRoute) {
+        if ("".equals(fileRoute))
+        {
+            JOptionPane.showMessageDialog(null, "Error! No hay ruta de acceso.");
+        } else
+        {
+            String str = "Usuarios\n";
+            if (allPerson.isEmpty() == false)
+            {
+                for (int x = 0; x < allPerson.len(); x++)
+                {
+                    Vperson person = (Vperson) allPerson.get(x);
+                    str = str + person.getVnum() + "," + person.getName() + "\n";
+                }
+                str = str + "Relaciones\n";
+                for (int x = 0; x < allPerson.len(); x++)
+                {
+                    Vperson person = (Vperson) allPerson.get(x);
+                    List auxList = person.getAdyList();
+                    for (int y = 0; y < auxList.len(); y++)
+                    {
+                        Edge edge = (Edge) auxList.get(y);
+                        str = str + Integer.toString(edge.getStart()) + "," + Integer.toString(edge.getEnd()) + "," + Integer.toString(edge.getWeight()) + "\n";
+                    }
+                }
+            }
+            try{
+               PrintWriter pw = new PrintWriter(fileRoute); 
+               pw.print(str);
+               pw.close();
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Error! No se ha escrito sobre el archivo.");
+            }
+        }
+    }
+    
+    public List read_users(String fileRoute){
         List persons = new List();
+        
         String line;
         String str = "";
-        File newFile = new File("C:\\Users\\Juan Diego\\Desktop\\Java\\Clases\\Proyecto1\\src\\TextFiles\\Persons.txt");
-        try{
-            if(newFile.exists() == false){
+        
+        File newFile = new File(fileRoute);
+        try {
+            if (newFile.exists() == false) {
                 newFile.createNewFile();
-            }
-            else{
+            } else {
                 FileReader fr = new FileReader(newFile);
                 BufferedReader br = new BufferedReader(fr);
-                
-                while(!"Relaciones".equals(line = br.readLine())){
-                    if(line.isEmpty() == false && line.equals("Usuarios") == false){
+
+                while (!"Relaciones".equals(line = br.readLine())) {
+                    if (line.isEmpty() == false && line.equals("Usuarios") == false) {
                         str += line + "\n";
                     }
                 }
-                if("".equals(str) == false){
+                if ("".equals(str) == false) {
                     String[] str_split = str.split("\n");
-                    for(int x = 0; x < str_split.length; x++){
+                    for (int x = 0; x < str_split.length; x++) {
                         String[] Str = str_split[x].split(",");
-                        Vperson pA, pB;
+                        Vperson person = new Vperson(Integer.parseInt(Str[0]), Str[1]);
+                        persons.append(person);
                     }
                 }
                 br.close();
-                
+
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error");
         }
         return persons;
+        
+        
     }
     
-    public List read_relations(List allPerson){
+    public List read_relations(List allPerson, String fileRoute) {
         List relations = new List();
         String line;
         String str = "";
-        File newFile = new File("C:\\Users\\Juan Diego\\Desktop\\Java\\Clases\\Proyecto1\\src\\TextFiles\\Persons.txt");
-        try{
-            if(newFile.exists() == false){
+        
+        File newFile = new File(fileRoute);
+        try {
+            if (newFile.exists() == false) {
                 newFile.createNewFile();
-            }
-            else{
+            } else {
                 FileReader fr = new FileReader(newFile);
                 BufferedReader br = new BufferedReader(fr);
-                
+
                 boolean run = false;
-                while(null != (line = br.readLine())){
-                    System.out.println(line + " " + line.equals("Relaciones") + " " + run);
-                    if(line.isEmpty() == false && line.equals("Usuarios") == false && run == true){
+                while (null != (line = br.readLine())) {
+                    if (line.isEmpty() == false && line.equals("Usuarios") == false && run == true) {
                         str += line + "\n";
                     }
-                    if(line.equals("Relaciones") == true){
+                    if (line.equals("Relaciones") == true) {
                         run = true;
                     }
 
                 }
-                
-                if("".equals(str) == false){
+
+                if ("".equals(str) == false) {
                     String[] str_split = str.split("\n");
-                    for(int x = 0; x < str_split.length; x++){
+                    for (int x = 0; x < str_split.length; x++) {
                         String[] Str = str_split[x].split(",");
-                        Vperson personA = findPerson(Integer.parseInt(Str[0]), allPerson);
-                        Vperson personB = findPerson(Integer.parseInt(Str[1]), allPerson);
-                        Edge newEdge = new Edge(personA, personB, Integer.parseInt(Str[2]));
+                        Edge newEdge = new Edge(Integer.parseInt(Str[0]), Integer.parseInt(Str[1]), Integer.parseInt(Str[2]));
                         relations.append(newEdge);
                     }
                 }
                 br.close();
-                
+
             }
-        }
-        catch(Exception e){
+        } 
+        catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error");
         }
         return relations;
+    }
+        
 
-    }
+
     
-    public Vperson findPerson(int Vnum, List allPerson){
-        Util f = new Util();
-        
-        Vperson person;
-        person = null;
-        int p;
-        p = 0;       
-        
-        for(int x = 0; x < allPerson.getSize(); x++){
-            Vperson pAux = (Vperson) allPerson.get(x);
-            if(pAux.getVnum() == Vnum){
-                person = pAux;
-                p = x;
-            }
-        }
-        if(person == null){
-            return null;
-        }
-        else{
-            return person;
-        }
-    }
-        
-    
-    
-    
-    
-    
-    
-    
+
     
 }
