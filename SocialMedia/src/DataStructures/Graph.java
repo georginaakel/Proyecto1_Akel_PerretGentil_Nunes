@@ -5,7 +5,8 @@
  */
 package DataStructures;
 
-import Classes.Util;
+import Classes.Edge;
+import Classes.Vperson;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,12 +14,12 @@ import javax.swing.JOptionPane;
  * @author Juan
  */
 public class Graph {
-    private List<Vperson> allPerson;
-    private int size;
+    private List allPerson;
+    private int count;
 
     public Graph() {
         this.allPerson = new List();
-        this.size = 0;
+        this.count = 0;
     }
 
     public List getAllPerson() {
@@ -29,68 +30,57 @@ public class Graph {
         this.allPerson = allPerson;
     }
 
-    public int getSize() {
-        return size;
+    public int getCount() {
+        return count;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setCount(int count) {
+        this.count = count;
     }
     
     public void addPerson(int Vnum, String name){
-        Util f = new Util();
-        
-        Vperson person = new Vperson(name, Vnum);
-        allPerson.append(person);
-        size++;
-        f.write_txt(allPerson);
-    }
-    
-    public void addEdge(int Vfirst, int Vlast, int weight){
-        Util f = new Util();
-        
-        Vperson personA, personB;
-        personA = personB = null;
-        int pA, pB;
-        pA = pB = 0;       
-        
-        for(int x = 0; x < size; x++){
-            Vperson pAux = (Vperson) allPerson.get(x);
-            if(pAux.getVnum() == Vfirst){
-                personA = pAux;
-                pA = x;
-            }
-            if(pAux.getVnum() == Vlast){
-                personB = pAux;
-                pB = x;
-            }
-        }
-        
-        if(personA == null || personB == null){
-            JOptionPane.showMessageDialog(null, "Error: numero de vertice no encontrado");
+        Vperson person = new Vperson(Vnum, name);       
+        if(allPerson.isEmpty() == true){
+            allPerson.append(person);
         }
         else{
-            Edge edgeA = new Edge(personA, personB, weight);
-            
-            List adyListA = personA.getAdyList();
-            adyListA.append(edgeA);
-            personA.setAdyList(adyListA);
-            
-            allPerson.replace(pA, personA);
-
-            f.write_txt(allPerson);
+            boolean run = true;
+            for(int x = 0; x < allPerson.len(); x++){
+                Vperson pAux = (Vperson) allPerson.get(x);
+                if(pAux.getVnum() == Vnum){
+                    JOptionPane.showMessageDialog(null, "Error: numero de vertice ya registrado");
+                    run = false;
+                }
+            }
+            if(run == true){
+                allPerson.append(person);
+            }     
         }
     }
     
-
-    
-    
-    
-    
-    
-    
+    public void addEdge(int start, int end, int weight){
+        if(start == end){
+            JOptionPane.showMessageDialog(null, "Error: no se admite relacion con un mismo vertice");
+        }
         
+        if(allPerson.isEmpty() == true){
+            JOptionPane.showMessageDialog(null, "Error: no hay vertices");
+        }
+        
+        for(int x = 0; x < allPerson.len(); x++){
+            int position = 0;
+            Vperson pAux = (Vperson) allPerson.get(x);
+            
+            if(pAux.getVnum() == start){
+                Edge edge = new Edge(start, end, weight);
+                List adyList = pAux.getAdyList();
+                adyList.append(edge);
+                pAux.setAdyList(adyList);
+                allPerson.replace(position, pAux);                             
+            }
+        }
+        
+    }
+    
+    
 }
-    
-    
-
