@@ -5,15 +5,12 @@
 package Classes;
 
 import DataStructures.Graph;
-import GraphicInterface.Interface1;
-import GraphicInterface.Interface2;
+
 
 /**
  *
  * @author Orveo Di Luca
  */
-public class App {
-    Interface1 in1 = new Interface1();
-    Interface2 in2 = new Interface2(in1.getGraph());
+public class App {   
     
 }
