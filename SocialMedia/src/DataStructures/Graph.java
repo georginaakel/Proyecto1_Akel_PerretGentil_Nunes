@@ -51,6 +51,10 @@ public class Graph {
                     JOptionPane.showMessageDialog(null, "Error: numero de vertice ya registrado");
                     run = false;
                 }
+                if(pAux.getName().equals(name)){
+                    JOptionPane.showMessageDialog(null, "Error: nombre de vertice ya registrado");
+                    run = false;
+                }
             }
             if(run == true){
                 allPerson.append(person);
@@ -81,6 +85,65 @@ public class Graph {
         }
         
     }
+    
+    public void deletePersonByName(String name){     
+        boolean deleted = false;
+        Vperson auxPerson = null;
+        for(int x = 0; x < allPerson.len(); x++){
+            Vperson person = (Vperson) allPerson.get(x);
+            if(person.getName().equals(name)){
+                auxPerson = person;
+                allPerson.pop(x);
+            }
+        }
+        
+        for(int x = 0; x < allPerson.len(); x++){
+            Vperson person = (Vperson) allPerson.get(x);
+            List adyList = person.getAdyList();
+            for(int y = 0; y < adyList.len(); y++){
+                Edge edge = (Edge) adyList.get(y);
+                if(edge.getEnd() == auxPerson.getVnum()){
+                    adyList.pop(y);
+                    person.setAdyList(adyList);
+                    allPerson.replace(x, person);
+                }
+            }
+        }
+             
+        if(deleted == false){
+            JOptionPane.showMessageDialog(null, "Error: vertice no encontrado");
+        }
+    }
+    
+    public void deletePersonByInt(int Vnum){
+        boolean deleted = false;
+        for(int x = 0; x < allPerson.len(); x++){
+            Vperson person = (Vperson) allPerson.get(x);
+            if(person.getVnum() == Vnum){
+                allPerson.pop(x);
+                deleted = true;
+            }
+        }
+        
+        for(int x = 0; x < allPerson.len(); x++){
+            Vperson person = (Vperson) allPerson.get(x);
+            List adyList = person.getAdyList();
+            for(int y = 0; y < adyList.len(); y++){
+                Edge edge = (Edge) adyList.get(y);
+                if(edge.getEnd() == Vnum){
+                    adyList.pop(y);
+                    person.setAdyList(adyList);
+                    allPerson.replace(0, person);
+                }
+            }
+        }
+        
+        if(deleted == false){
+            JOptionPane.showMessageDialog(null, "Error: vertice no encontrado");
+        }
+    }
+    
+    
     
     
 }

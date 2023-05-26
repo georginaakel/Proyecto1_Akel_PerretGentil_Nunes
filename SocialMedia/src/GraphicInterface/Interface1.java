@@ -10,6 +10,7 @@ import Classes.Util;
 import Classes.Vperson;
 import DataStructures.Graph;
 import DataStructures.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,7 +18,8 @@ import DataStructures.List;
  */
 public class Interface1 extends javax.swing.JFrame {
     private String fileRoute; 
-    private Graph graph; 
+    private Graph graph;
+    private boolean loaded;
     
     /**
      * Creates new form Interface1
@@ -26,13 +28,32 @@ public class Interface1 extends javax.swing.JFrame {
         setVisible(true);
         initComponents();
         this.graph = new Graph();
+        this.loaded = false;
+    }
+
+    public String getFileRoute() {
+        return fileRoute;
     }
     
-    public void getFileRoute(){       
+    public void setFileRoute(String fileRoute) {
+        this.fileRoute = fileRoute;
+    }
+    
+    public Graph getGraph() {
+        return graph;
+    }
+
+    public void setGraph(Graph graph) {
+        this.graph = graph;
+    }
+    
+    
+    public void getRoute(){       
         Util u = new Util();  
         fileRoute = u.ObtenerRutaTXT();
         if(fileRoute.endsWith("txt")){
             System.out.println(fileRoute);
+            loaded = true;
         }
         
     }
@@ -109,6 +130,12 @@ public class Interface1 extends javax.swing.JFrame {
     private void loadFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFileActionPerformed
         getFileRoute();
         loadTXT();
+        if(loaded == true){
+            JOptionPane.showMessageDialog(null, "Archivo cargado exitosamente.");
+        }
+        Interface2 in2 = new Interface2(graph , fileRoute); 
+        in2.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_loadFileActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
