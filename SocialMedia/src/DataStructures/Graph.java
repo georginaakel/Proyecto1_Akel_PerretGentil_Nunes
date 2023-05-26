@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author Juan
  */
 public class Graph {
-    private List allPerson;
+    private List<Vperson> allPerson;
     private int count;
 
     public Graph() {
@@ -86,31 +86,42 @@ public class Graph {
         
     }
     
+    public int findVperson(String name){
+        for(int x = 0; x < allPerson.len(); x++){
+            if(allPerson.get(x).getName().equals(name)){
+                return x;
+            }
+        }
+        return -1;
+    }
+    
     public void deletePersonByName(String name){     
         boolean deleted = false;
         Vperson auxPerson = null;
-        for(int x = 0; x < allPerson.len(); x++){
-            Vperson person = (Vperson) allPerson.get(x);
-            if(person.getName().equals(name)){
-                auxPerson = person;
-                allPerson.pop(x);
-            }
-        }
         
-        for(int x = 0; x < allPerson.len(); x++){
-            Vperson person = (Vperson) allPerson.get(x);
-            List adyList = person.getAdyList();
-            for(int y = 0; y < adyList.len(); y++){
-                Edge edge = (Edge) adyList.get(y);
-                if(edge.getEnd() == auxPerson.getVnum()){
-                    adyList.pop(y);
-                    person.setAdyList(adyList);
-                    allPerson.replace(x, person);
+        int position = findVperson(name);
+        if(position != -1){
+            auxPerson = allPerson.get(position);
+            allPerson.pop(position);
+            deleted = true;
+
+            for(int x = 0; x < allPerson.len(); x++){
+                Vperson person = allPerson.get(x);
+                List adyList = person.getAdyList();
+                if(adyList.len() > 0){
+                    for(int y = 0; y < adyList.len(); y++){
+                        Edge edge = (Edge) adyList.get(y);
+                        if(edge.getEnd() == auxPerson.getVnum()){
+                            adyList.pop(y);
+                            person.setAdyList(adyList);
+                            allPerson.replace(x, person);
+                        }
+                    }
                 }
             }
-        }
-             
-        if(deleted == false){
+
+        }           
+        else if(deleted == false || position == -1){
             JOptionPane.showMessageDialog(null, "Error: vertice no encontrado");
         }
     }
@@ -118,7 +129,7 @@ public class Graph {
     public void deletePersonByInt(int Vnum){
         boolean deleted = false;
         for(int x = 0; x < allPerson.len(); x++){
-            Vperson person = (Vperson) allPerson.get(x);
+            Vperson person = allPerson.get(x);
             if(person.getVnum() == Vnum){
                 allPerson.pop(x);
                 deleted = true;
@@ -126,7 +137,7 @@ public class Graph {
         }
         
         for(int x = 0; x < allPerson.len(); x++){
-            Vperson person = (Vperson) allPerson.get(x);
+            Vperson person = allPerson.get(x);
             List adyList = person.getAdyList();
             for(int y = 0; y < adyList.len(); y++){
                 Edge edge = (Edge) adyList.get(y);
@@ -145,7 +156,7 @@ public class Graph {
     
     public void printGraph(){
         for(int x = 0; x < allPerson.len(); x++){
-            Vperson vertice = (Vperson) allPerson.get(x);
+            Vperson vertice = allPerson.get(x);
             System.out.print("El vertice " + vertice.getName()+" esta conectado con ");
             if(vertice.getAdyList().len() == 0){
                 System.out.println(" nada");

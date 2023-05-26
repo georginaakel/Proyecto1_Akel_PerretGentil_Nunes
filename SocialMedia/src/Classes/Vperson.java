@@ -9,7 +9,7 @@ import DataStructures.List;
  * @author Juan
  */
 public class Vperson {
-    private List AdyList;
+    private List<Edge> AdyList;
     private int Vnum;
     private String name;
 

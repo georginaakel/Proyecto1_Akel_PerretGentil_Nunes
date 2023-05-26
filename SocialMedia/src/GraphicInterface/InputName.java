@@ -15,19 +15,21 @@ import javax.swing.JOptionPane;
  *
  * @author Juan
  */
-public class Inter3 extends javax.swing.JFrame {
+public class InputName extends javax.swing.JFrame {
     private String Vname;
     private int Vnum;
     private static Graph graph;
     private static String fileRoute;
     private boolean run;
+    private static int option;
     /**
      * Creates new form Inter3
      */
-    public Inter3(Graph graph, String fileRoute) {
+    public InputName(Graph graph, String fileRoute, int option) {
         initComponents();
         this.graph = graph;
         this.fileRoute = fileRoute;
+        this.option = option;
     }
     
     public void addVperson(){
@@ -36,9 +38,13 @@ public class Inter3 extends javax.swing.JFrame {
         graph.addPerson(Vnum, Vname);
     }
     
+    public void deleteVperson(){
+        graph.deletePersonByName(Vname);
+    }
+    
     public boolean setNamePerson(){
         String name = nameInput.getText();
-        System.out.println(name);
+        System.out.println("\n");
         if(Util.isNumeric(name) == true){
             JOptionPane.showMessageDialog(null, "Error: tipo de dato incorrecto");
             return false;
@@ -119,11 +125,19 @@ public class Inter3 extends javax.swing.JFrame {
 
     private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
         run = setNamePerson();
-        if(run == true){       
-            addVperson();
-            this.dispose();
-            Inter2 inter2 = new Inter2(graph, fileRoute);
-            inter2.setVisible(true);
+        if(run == true){
+            if(option == 0){
+                addVperson();
+                this.dispose();
+                InterfaceMain inter2 = new InterfaceMain(graph, fileRoute);
+                inter2.setVisible(true);
+            }
+            else{
+                deleteVperson();
+                this.dispose();
+                InterfaceMain inter2 = new InterfaceMain(graph, fileRoute);
+                inter2.setVisible(true);               
+            }
         }
     }//GEN-LAST:event_finishActionPerformed
 
@@ -148,13 +162,13 @@ public class Inter3 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inter3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InputName.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inter3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InputName.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inter3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InputName.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inter3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InputName.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -162,7 +176,7 @@ public class Inter3 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inter3(graph, fileRoute).setVisible(true);
+                new InputName(graph, fileRoute, option).setVisible(true);
             }
         });
     }
