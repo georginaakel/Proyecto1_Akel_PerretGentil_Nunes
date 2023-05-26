@@ -7,7 +7,7 @@ package Classes;
 
 import Classes.Util;
 import DataStructures.Graph;
-import GraphicInterface.Inter1;
+import GraphicInterface.LoadFile;
 
 
 /**
@@ -25,9 +25,8 @@ public class TestProyecto {
         g.addPerson(0, "Juan");
         g.addPerson(1, "Pedro");
         g.addEdge(0, 1, 10);
-        System.out.println(Util.isNumeric("0123"));
         
-        Inter1 inter = new Inter1();
+        LoadFile inter = new LoadFile();
         inter.setVisible(true);
         
        

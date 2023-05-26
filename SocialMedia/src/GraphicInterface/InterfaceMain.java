@@ -12,14 +12,14 @@ import DataStructures.Graph;
  *
  * @author Juan
  */
-public class Inter2 extends javax.swing.JFrame {
+public class InterfaceMain extends javax.swing.JFrame {
     private Util util; 
     private static Graph graph;
     private static String fileRoute; 
     /**
      * Creates new form Inter2
      */
-    public Inter2(Graph graph, String fileRoute) {
+    public InterfaceMain(Graph graph, String fileRoute) {
         initComponents();
         this.util = new Util();
         this.graph = graph;
@@ -51,7 +51,7 @@ public class Inter2 extends javax.swing.JFrame {
         Back = new javax.swing.JButton();
         CloseButton = new javax.swing.JButton();
         AddPerson = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        deleteUser = new javax.swing.JButton();
         print = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,8 +99,13 @@ public class Inter2 extends javax.swing.JFrame {
         });
         jPanel1.add(AddPerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
-        jButton2.setText("Borrar persona");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
+        deleteUser.setText("Borrar persona");
+        deleteUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteUserActionPerformed(evt);
+            }
+        });
+        jPanel1.add(deleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         print.setText("print");
         print.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +145,7 @@ public class Inter2 extends javax.swing.JFrame {
     }//GEN-LAST:event_ActualizarPersonActionPerformed
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
-        Inter1 in1 = new Inter1();
+        LoadFile in1 = new LoadFile();
         in1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackActionPerformed
@@ -150,7 +155,7 @@ public class Inter2 extends javax.swing.JFrame {
     }//GEN-LAST:event_CloseButtonActionPerformed
 
     private void AddPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPersonActionPerformed
-        Inter3 inter3 = new Inter3(graph, fileRoute);
+        InputName inter3 = new InputName(graph, fileRoute, 0);
         inter3.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_AddPersonActionPerformed
@@ -158,6 +163,12 @@ public class Inter2 extends javax.swing.JFrame {
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
         graph.printGraph();
     }//GEN-LAST:event_printActionPerformed
+
+    private void deleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUserActionPerformed
+        InputName inter3 = new InputName(graph, fileRoute, 1);
+        inter3.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_deleteUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,13 +187,13 @@ public class Inter2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inter2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inter2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inter2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inter2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfaceMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -190,7 +201,7 @@ public class Inter2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inter2(graph, fileRoute).setVisible(true);
+                new InterfaceMain(graph, fileRoute).setVisible(true);
             }
         });
     }
@@ -203,7 +214,7 @@ public class Inter2 extends javax.swing.JFrame {
     private javax.swing.JButton CloseButton;
     private javax.swing.JButton DFS;
     private javax.swing.JButton ShowPerson;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton deleteUser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton print;
     // End of variables declaration//GEN-END:variables
