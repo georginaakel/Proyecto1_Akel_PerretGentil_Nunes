@@ -19,7 +19,7 @@ import javax.swing.filechooser.FileSystemView;
  *
  * @author Juan
  */
-public class Util {
+public class  Util {
     
 
     
@@ -111,7 +111,7 @@ public class Util {
 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error");
+            
         }
         return persons;
         
@@ -155,7 +155,7 @@ public class Util {
             }
         } 
         catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error");
+            
         }
         return relations;
     }

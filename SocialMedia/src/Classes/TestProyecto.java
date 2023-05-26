@@ -23,7 +23,7 @@ public class TestProyecto {
         // TODO code application logic here
         Graph g = new Graph();
         g.addPerson(0, "Juan");
-        g.addPerson(1, "Pedro");  
+        g.addPerson(1, "Pedro");
         g.addEdge(0, 1, 10);
         
         Interface1 inter = new Interface1();
