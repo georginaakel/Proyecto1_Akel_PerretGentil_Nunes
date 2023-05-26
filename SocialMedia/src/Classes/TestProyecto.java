@@ -6,9 +6,9 @@
 package Classes;
 
 import Classes.Util;
-import Classes.Vperson;
 import DataStructures.Graph;
-import GraphicInterface.Interface1;
+import GraphicInterface.Inter1;
+
 
 /**
  *
@@ -25,8 +25,11 @@ public class TestProyecto {
         g.addPerson(0, "Juan");
         g.addPerson(1, "Pedro");
         g.addEdge(0, 1, 10);
+        System.out.println(Util.isNumeric("0123"));
         
-        Interface1 inter = new Interface1();
+        Inter1 inter = new Inter1();
+        inter.setVisible(true);
+        
        
         
         

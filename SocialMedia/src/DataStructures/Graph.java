@@ -143,6 +143,36 @@ public class Graph {
         }
     }
     
+    public void printGraph(){
+        for(int x = 0; x < allPerson.len(); x++){
+            Vperson vertice = (Vperson) allPerson.get(x);
+            System.out.print("El vertice " + vertice.getName()+" esta conectado con ");
+            if(vertice.getAdyList().len() == 0){
+                System.out.println(" nada");
+            }
+            else if(vertice.getAdyList().len() > 1){
+                for(int y = 0; y < vertice.getAdyList().len(); y++){
+                    Edge arista = (Edge) vertice.getAdyList().get(y);
+                    if(y == vertice.getAdyList().len()-1){
+                        System.out.println(" y " + arista.getEnd());    
+                    }
+                    else if(y == vertice.getAdyList().len()-2){
+                        System.out.print(arista.getEnd());
+                    }
+                    else{
+                        System.out.print(arista.getEnd() + ", ");
+                    }
+                }    
+            }
+            else{
+                for(int y = 0; y < vertice.getAdyList().len(); y++){
+                    Edge arista = (Edge) vertice.getAdyList().get(y);
+                    System.out.println(arista.getEnd());
+                }
+            }
+        }
+    }
+    
     
     
     
