@@ -25,14 +25,7 @@ public class TestProyecto {
         inter.setVisible(true);
         
         Graph graph = inter.getGraph();
-        
-        
-       
-        
-        
-       
-       
-       
+     
     }
     
 }
