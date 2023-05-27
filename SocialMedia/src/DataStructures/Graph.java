@@ -14,14 +14,17 @@ import javax.swing.JOptionPane;
  * @author Juan
  */
 public class Graph {
+    //Atributos de la clase
     private List<Vperson> allPerson;
     private int count;
-
+    
+    //Constructor: no se pasa nada por parametro
     public Graph() {
         this.allPerson = new List();
         this.count = 0;
-    }
-
+    }  
+    
+    //================Getters and Setters==================
     public List getAllPerson() {
         return allPerson;
     }
@@ -38,6 +41,10 @@ public class Graph {
         this.count = count;
     }
     
+
+    //====================Procedimientos y Metodos===================
+    
+    //Agregar un vertice al grafo
     public void addPerson(int Vnum, String name){
         Vperson person = new Vperson(Vnum, name);       
         if(allPerson.isEmpty() == true){
@@ -62,31 +69,64 @@ public class Graph {
         }
     }
     
-    public void addEdge(int start, int end, int weight){
-        if(start == end){
-            JOptionPane.showMessageDialog(null, "Error: no se admite relacion con un mismo vertice");
+    //Retorna un valor booleano dependiendo de si la Arista pasada por parametro existe en la adyList del vertice pasado por parametro
+    public boolean edgeExist(int start, int end, Vperson person){
+        List adyList = person.getAdyList();
+        if(adyList.isEmpty() == true){
+            return false;
         }
-        
-        if(allPerson.isEmpty() == true){
-            JOptionPane.showMessageDialog(null, "Error: no hay vertices");
-        }
-        
-        for(int x = 0; x < allPerson.len(); x++){
-            int position = 0;
-            Vperson pAux = (Vperson) allPerson.get(x);
-            
-            if(pAux.getVnum() == start){
-                Edge edge = new Edge(start, end, weight);
-                List adyList = pAux.getAdyList();
-                adyList.append(edge);
-                pAux.setAdyList(adyList);
-                allPerson.replace(position, pAux);                             
+        else{
+            for(int x = 0; x < adyList.len(); x++){
+                Edge edge = (Edge) adyList.get(x);
+                if(edge.getStart() == start && edge.getEnd() == end){
+                    return true;
+                }
+                else if(edge.getStart() == end && edge.getEnd() == start){
+                    return true;
+                }
             }
+            return false;
+        }
+    }
+    
+    //Agregar una arista al grafo
+    public void addEdge(int start, int end, int weight){
+        try{
+            Vperson personStart = allPerson.get(findPositionInt(start));
+            Vperson personEnd = allPerson.get(findPositionInt(end));
+            if(start == end){
+                JOptionPane.showMessageDialog(null, "Error: no se admite relacion con un mismo vertice");
+            }
+
+            else if(allPerson.isEmpty() == true){
+                JOptionPane.showMessageDialog(null, "Error: no hay vertices");
+            }
+            else if(edgeExist(start, end, personStart) == true || edgeExist(start, end, personEnd) == true){
+                JOptionPane.showMessageDialog(null, "Error: relacion ya establecida con anterioridad");
+            }           
+            else{
+                for(int x = 0; x < allPerson.len(); x++){
+                    int position = x;
+                    Vperson pAux = (Vperson) allPerson.get(x);
+
+                    if(pAux.getVnum() == start){
+                        Edge edge = new Edge(start, end, weight);
+                        List adyList = pAux.getAdyList();
+                        adyList.append(edge);
+                        pAux.setAdyList(adyList);
+                        allPerson.replace(position, pAux);                             
+                    }
+                }           
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: dato ingresado incorrecto");
         }
         
     }
     
-    public int findVperson(String name){
+    //Encuentra la posicion del vertice en la lista apartir de su nombre
+    public int findPositionStr(String name){
         for(int x = 0; x < allPerson.len(); x++){
             if(allPerson.get(x).getName().equals(name)){
                 return x;
@@ -95,11 +135,41 @@ public class Graph {
         return -1;
     }
     
+    //Encuentra la posicion del vertice en la lista apartir de su numero
+    public int findPositionInt(int Vnum){
+        for(int x = 0; x < allPerson.len(); x++){
+            if(allPerson.get(x).getVnum() == Vnum){
+                return x;
+            }
+        }
+        return -1;
+    }
+    
+    //Retorna el numero del vertice apartir de su nombre
+    public int findVnum(String name){
+        int position = findPositionStr(name);
+        
+        Vperson person = allPerson.get(position);
+        
+        return person.getVnum();
+    }
+    
+    //Retorna el nombre del vertice apartir de su numero
+    public String findName(int Vnum){
+        for(int x = 0; x < allPerson.len(); x++){
+            if(allPerson.get(x).getVnum() == Vnum){
+                return allPerson.get(x).getName();
+            }
+        }
+        return null;
+    }
+    
+    //Borra un vertice apartir de su nombre
     public void deletePersonByName(String name){     
         boolean deleted = false;
         Vperson auxPerson = null;
         
-        int position = findVperson(name);
+        int position = findPositionStr(name);
         if(position != -1){
             auxPerson = allPerson.get(position);
             allPerson.pop(position);
@@ -126,6 +196,7 @@ public class Graph {
         }
     }
     
+    //Borra un vertice apartir de su numero
     public void deletePersonByInt(int Vnum){
         boolean deleted = false;
         for(int x = 0; x < allPerson.len(); x++){
@@ -154,31 +225,33 @@ public class Graph {
         }
     }
     
+    //Imprime el grafo en la consola
     public void printGraph(){
         for(int x = 0; x < allPerson.len(); x++){
             Vperson vertice = allPerson.get(x);
-            System.out.print("El vertice " + vertice.getName()+" esta conectado con ");
+            System.out.print("El usuario " + vertice.getName()+" esta conectado con ");
             if(vertice.getAdyList().len() == 0){
-                System.out.println(" nada");
+                System.out.println(" nadie");
             }
             else if(vertice.getAdyList().len() > 1){
                 for(int y = 0; y < vertice.getAdyList().len(); y++){
                     Edge arista = (Edge) vertice.getAdyList().get(y);
+                    String name = findName(arista.getEnd());
                     if(y == vertice.getAdyList().len()-1){
-                        System.out.println(" y " + arista.getEnd());    
+                        System.out.println(" y " + name);    
                     }
                     else if(y == vertice.getAdyList().len()-2){
-                        System.out.print(arista.getEnd());
+                        System.out.print(name);
                     }
                     else{
-                        System.out.print(arista.getEnd() + ", ");
+                        System.out.print(name + ", ");
                     }
                 }    
             }
             else{
                 for(int y = 0; y < vertice.getAdyList().len(); y++){
                     Edge arista = (Edge) vertice.getAdyList().get(y);
-                    System.out.println(arista.getEnd());
+                    System.out.println(findName(arista.getEnd()));
                 }
             }
         }

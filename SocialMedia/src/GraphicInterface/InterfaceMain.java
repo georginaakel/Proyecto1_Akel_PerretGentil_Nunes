@@ -24,6 +24,7 @@ public class InterfaceMain extends javax.swing.JFrame {
         this.util = new Util();
         this.graph = graph;
         this.fileRoute = fileRoute;
+        setLocationRelativeTo(null);
     }
     
     public Graph getGraph() {
@@ -53,6 +54,7 @@ public class InterfaceMain extends javax.swing.JFrame {
         AddPerson = new javax.swing.JButton();
         deleteUser = new javax.swing.JButton();
         print = new javax.swing.JButton();
+        addRelation = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,6 +117,14 @@ public class InterfaceMain extends javax.swing.JFrame {
         });
         jPanel1.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
 
+        addRelation.setText("Agregar relacion");
+        addRelation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addRelationActionPerformed(evt);
+            }
+        });
+        jPanel1.add(addRelation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,6 +172,7 @@ public class InterfaceMain extends javax.swing.JFrame {
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
         graph.printGraph();
+        System.out.println(" ");
     }//GEN-LAST:event_printActionPerformed
 
     private void deleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUserActionPerformed
@@ -169,6 +180,12 @@ public class InterfaceMain extends javax.swing.JFrame {
         inter3.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_deleteUserActionPerformed
+
+    private void addRelationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRelationActionPerformed
+        InputEdge inter4 = new InputEdge(graph, fileRoute);
+        this.dispose();
+        inter4.setVisible(true);
+    }//GEN-LAST:event_addRelationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,6 +231,7 @@ public class InterfaceMain extends javax.swing.JFrame {
     private javax.swing.JButton CloseButton;
     private javax.swing.JButton DFS;
     private javax.swing.JButton ShowPerson;
+    private javax.swing.JButton addRelation;
     private javax.swing.JButton deleteUser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton print;

@@ -28,6 +28,7 @@ public class LoadFile extends javax.swing.JFrame {
         initComponents();
         this.graph = new Graph();
         this.loaded = false;
+        setLocationRelativeTo(null);
     }
     
     public String getFileRoute() {
@@ -131,6 +132,7 @@ public class LoadFile extends javax.swing.JFrame {
     private void loadFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFileActionPerformed
         getRoute();
         loadTXT();
+        System.out.println(graph.findName(608));
         if(loaded == true){
             JOptionPane.showMessageDialog(null, "Archivo cargado exitosamente!");
             InterfaceMain inter2 = new InterfaceMain(graph, fileRoute);
