@@ -20,14 +20,12 @@ public class TestProyecto {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        Graph g = new Graph();
-        g.addPerson(0, "Juan");
-        g.addPerson(1, "Pedro");
-        g.addEdge(0, 1, 10);
-        
+        // TODO code application logic here      
         LoadFile inter = new LoadFile();
         inter.setVisible(true);
+        
+        Graph graph = inter.getGraph();
+        
         
        
         

@@ -265,16 +265,45 @@ public class List<T> {
         return -1;
     }
     
-    //parcial
-    public List tresListas(List listA, List listB, List listC){
-        listA.getTail().setNext(listB.getHead());
-        listB.getTail().setNext(listC.getHead());
-        listC.getTail().setNext(listA.getHead());
-        
-        listA.setSize(listA.len() + listB.len() + listC.len());
-        return listA;
+    //Retorna un valor booleano dependiendo si del string pasado por parametro existe en la lista
+    public boolean existStr(String data){
+        if(head.getData().equals(data) == true){
+            return true;
+        }
+        else if(tail.getData().equals(data) == true){
+            return true;
+        }
+        else{
+            Node pointer = head;
+            for(int x = 0; x < len(); x++){
+                if(pointer.getData().equals(data)){
+                    return true;
+                }
+                pointer = pointer.getNext();
+            }
+        }
+        return false;
     }
-
+    
+    ////Retorna un valor booleano dependiendo si del valor pasado por parametro existe en la lista
+    public boolean existStr(T data){
+        if(head.getData() == data){
+            return true;
+        }
+        else if(tail.getData() == data){
+            return true;
+        }
+        else{
+            Node pointer = head;
+            for(int x = 0; x < len(); x++){
+                if(pointer.getData() == data){
+                    return true;
+                }
+                pointer = pointer.getNext();
+            }
+        }
+        return false;
+    }
     
     
     
