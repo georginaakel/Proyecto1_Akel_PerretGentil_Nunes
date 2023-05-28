@@ -12,11 +12,14 @@ public class Vperson {
     private List<Edge> AdyList;
     private int Vnum;
     private String name;
+    private boolean isvisited; 
+    
+     
 
     public Vperson(int Vnum, String name) {
         this.AdyList = new List();
         this.Vnum = Vnum;
-        this.name = name;
+
     }
 
     public List getAdyList() {
@@ -46,8 +49,17 @@ public class Vperson {
     public void setName(String name) {
         this.name = name;
     }
+
+    public boolean getIsvisited() {
+        return isvisited;
+    }
+
+    public void setIsvisited(boolean isvisited) {
+        this.isvisited = isvisited;
+    }
+
     
     
-    
+
     
 }

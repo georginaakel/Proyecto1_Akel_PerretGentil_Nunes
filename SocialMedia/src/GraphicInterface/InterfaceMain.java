@@ -6,7 +6,10 @@
 package GraphicInterface;
 
 import Classes.Util;
+import Classes.Vperson;
 import DataStructures.Graph;
+import DataStructures.List;
+import DataStructures.Queue;
 
 /**
  *
@@ -16,6 +19,8 @@ public class InterfaceMain extends javax.swing.JFrame {
     private Util util; 
     private static Graph graph;
     private static String fileRoute; 
+    private final List<Vperson> vertice; 
+
     /**
      * Creates new form Inter2
      */
@@ -25,6 +30,7 @@ public class InterfaceMain extends javax.swing.JFrame {
         this.graph = graph;
         this.fileRoute = fileRoute;
         setLocationRelativeTo(null);
+        this.vertice = new List<>(); 
     }
     
     public Graph getGraph() {
@@ -34,6 +40,12 @@ public class InterfaceMain extends javax.swing.JFrame {
     public void setGraph(Graph graph) {
         this.graph = graph;
     }
+
+    
+  
+   public void DFS(){
+       
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,9 +84,19 @@ public class InterfaceMain extends javax.swing.JFrame {
         jPanel1.add(ShowPerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 120, -1));
 
         BFS.setText("BFS");
+        BFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BFSActionPerformed(evt);
+            }
+        });
         jPanel1.add(BFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 120, -1));
 
         DFS.setText("DFS");
+        DFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DFSActionPerformed(evt);
+            }
+        });
         jPanel1.add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 120, -1));
 
         Back.setText("Regresar");
@@ -186,6 +208,15 @@ public class InterfaceMain extends javax.swing.JFrame {
         this.dispose();
         inter4.setVisible(true);
     }//GEN-LAST:event_addRelationActionPerformed
+
+    private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
+        
+    }//GEN-LAST:event_BFSActionPerformed
+
+    private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
+        //Aquí lo que se irá hacer es quese pone primero la función y se le pasa por parametro el grafo y el numero de vertice que queremos que sea el primero.
+        //
+    }//GEN-LAST:event_DFSActionPerformed
 
     /**
      * @param args the command line arguments

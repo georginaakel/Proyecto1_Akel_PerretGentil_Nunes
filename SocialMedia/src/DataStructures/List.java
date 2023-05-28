@@ -5,6 +5,7 @@
  */
 package DataStructures;
 
+import Classes.Vperson;
 import javax.swing.JOptionPane;
 
 /**
@@ -305,7 +306,7 @@ public class List<T> {
         return false;
     }
     
-    
+
     
     
     
