@@ -12,13 +12,14 @@ public class Vperson {
     private List<Edge> AdyList;
     private int Vnum;
     private String name;
-    private boolean isvisited; 
+    private boolean isVisited; 
     
      
 
     public Vperson(int Vnum, String name) {
         this.AdyList = new List();
         this.Vnum = Vnum;
+        this.isVisited = false;
 
     }
 
@@ -50,13 +51,15 @@ public class Vperson {
         this.name = name;
     }
 
-    public boolean getIsvisited() {
-        return isvisited;
+    public boolean getIsVisited() {
+        return isVisited;
     }
 
-    public void setIsvisited(boolean isvisited) {
-        this.isvisited = isvisited;
+    public void setIsVisited(boolean isVisited) {
+        this.isVisited = isVisited;
     }
+
+    
 
     
     

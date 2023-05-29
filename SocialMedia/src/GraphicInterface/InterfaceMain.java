@@ -41,11 +41,6 @@ public class InterfaceMain extends javax.swing.JFrame {
         this.graph = graph;
     }
 
-    
-  
-   public void DFS(){
-       
-   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -210,12 +205,13 @@ public class InterfaceMain extends javax.swing.JFrame {
     }//GEN-LAST:event_addRelationActionPerformed
 
     private void BFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSActionPerformed
-        
+//        ShowBfs_Dfs inter5 = new ShowBfs_Dfs(graph,fileRoute);
+//        inter5.setVisible(true);
     }//GEN-LAST:event_BFSActionPerformed
 
     private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
-        //Aquí lo que se irá hacer es quese pone primero la función y se le pasa por parametro el grafo y el numero de vertice que queremos que sea el primero.
-        //
+//        ShowBfs_Dfs inter5 = new ShowBfs_Dfs(graph,fileRoute);
+//        inter5.setVisible(true);
     }//GEN-LAST:event_DFSActionPerformed
 
     /**
