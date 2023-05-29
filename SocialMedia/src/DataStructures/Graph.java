@@ -17,6 +17,7 @@ public class Graph {
     //Atributos de la clase
     private List<Vperson> allPerson;
     private int count;
+
     
     //Constructor: no se pasa nada por parametro
     public Graph() {
@@ -40,6 +41,8 @@ public class Graph {
     public void setCount(int count) {
         this.count = count;
     }
+    
+    
     
 
     //====================Procedimientos y Metodos===================
@@ -256,8 +259,41 @@ public class Graph {
             }
         }
     }
+    //Función que hace el recorrido del grafo por anchura, con la estructura de dato 
+   public String bfs() {
+        Vperson first = allPerson.get(0);
+        Queue<Vperson> queue = new Queue<>();
+        queue.encolar(first);
+        String cont = first.getName()+ " ";
+        first.setIsVisited(true);
+        while (!queue.isEmpty()) {
+            Vperson v = queue.pop();
+            Vperson aux;
+            while ((aux = getNoVisited(v)) != null) {
+                aux.setIsVisited(true);
+                cont += aux.getName()+ " ";
+                queue.encolar(aux);
+            }
+        }
+        cleanVisited();
+        return cont;
+    }
     
+     public Vperson getNoVisited(Vperson v) {
+        for (int x = 0; x < allPerson.len(); x++) {
+            Vperson person = allPerson.get(x);
+            if (v.getAdyList().existStr(person.getName()) && (person.getIsVisited()== false)) {
+                return person;
+            }
+        }
+        return null;
+    }
     
-    
-    
+     public void cleanVisited(){ 
+         for (int x = 0; x < allPerson.len(); x++){
+             Vperson person = allPerson.get(x);
+             person.setIsVisited(false);
+             allPerson.replace(x, person);
+         }
+     }
 }
