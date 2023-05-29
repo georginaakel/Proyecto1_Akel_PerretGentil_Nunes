@@ -20,7 +20,7 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
         initComponents();
         this.graph = graph; 
         this.fileRoute = fileRoute;
-        Areatexto.setText(graph.bfs());
+        BFSAreatexto.setText(graph.bfs());
     }
     
     /**
@@ -35,36 +35,57 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         back = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Areatexto = new javax.swing.JTextArea();
+        BFSAreatexto = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        DFSAreatexto = new javax.swing.JTextArea();
+        BFSButton = new javax.swing.JButton();
+        DFS = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        back.setText("Regresar");
+        back.setBackground(new java.awt.Color(58, 176, 248));
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Regresar.png"))); // NOI18N
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
             }
         });
-        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
+        jPanel1.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 620, -1, -1));
 
-        Areatexto.setColumns(20);
-        Areatexto.setRows(5);
-        jScrollPane1.setViewportView(Areatexto);
+        BFSAreatexto.setBackground(new java.awt.Color(0, 153, 204));
+        BFSAreatexto.setColumns(20);
+        BFSAreatexto.setRows(5);
+        jScrollPane1.setViewportView(BFSAreatexto);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 250, 380));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        DFSAreatexto.setBackground(new java.awt.Color(0, 153, 204));
+        DFSAreatexto.setColumns(20);
+        DFSAreatexto.setRows(5);
+        jScrollPane2.setViewportView(DFSAreatexto);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, 380));
+
+        BFSButton.setBackground(new java.awt.Color(255, 204, 0));
+        BFSButton.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        BFSButton.setForeground(new java.awt.Color(0, 102, 204));
+        BFSButton.setText("BFS");
+        jPanel1.add(BFSButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 550, 90, 50));
+
+        DFS.setBackground(new java.awt.Color(255, 204, 0));
+        DFS.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        DFS.setForeground(new java.awt.Color(0, 102, 204));
+        DFS.setText("DFS");
+        jPanel1.add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 550, 90, 50));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/3.png"))); // NOI18N
+        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 700));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -117,9 +138,14 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea Areatexto;
+    private javax.swing.JTextArea BFSAreatexto;
+    private javax.swing.JButton BFSButton;
+    private javax.swing.JButton DFS;
+    private javax.swing.JTextArea DFSAreatexto;
+    private javax.swing.JLabel Fondo;
     private javax.swing.JButton back;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
