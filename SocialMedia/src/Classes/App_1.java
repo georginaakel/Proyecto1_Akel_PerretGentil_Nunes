@@ -4,7 +4,7 @@
  */
 package Classes;
 
-import DataStructures.Graph;
+import DataStructures.Grafo;
 
 
 /**
