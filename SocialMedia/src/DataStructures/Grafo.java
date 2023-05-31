@@ -13,13 +13,13 @@ import javax.swing.JOptionPane;
  *
  * @author Juan
  */
-public class Graph {
+public class Grafo {
     //Atributos de la clase
     private List<Vperson> allPerson;
     private int count;
     
     //Constructor: no se pasa nada por parametro
-    public Graph() {
+    public Grafo() {
         this.allPerson = new List();
         this.count = 0;
     }  

@@ -6,7 +6,7 @@
 package Classes;
 
 import Classes.Util;
-import DataStructures.Graph;
+import DataStructures.Grafo;
 import DataStructures.List;
 import GraphicInterface.LoadFile;
 
@@ -24,9 +24,7 @@ public class TestProyecto {
         // TODO code application logic here      
         LoadFile inter = new LoadFile();
         inter.setVisible(true);
-        
-        
-        
+               
         
         
      
