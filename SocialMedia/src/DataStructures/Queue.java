@@ -1,78 +1,39 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package DataStructures;
 
 /**
- *Clase de la estructura de dato, cola.
- * @author Orveo Di Luca
+ *
+ * @author Juan
  */
 public class Queue<T> {
-    private Node head; 
-    private Node tail;
-    private int size; 
-    
-    //Vacía la cola. 
-    public Queue() {
-        this.head = this.tail = null;
-        this.size = 0;
-    }
-    
-    public boolean isEmpty(){
-        return head == null;
-    }
-    
-    //Agrega el elementto a la cola. 
-    public void encolar(T data){
-        Node nodo = new Node(data);
-        if (this.isEmpty()){
-            head = tail = nodo;
-        } else {
-            Node aux = tail;
-            aux.setNext(nodo);
-        }
-        tail = nodo;
-        size++;
-    }
-    
-    //Borra el elemento de la cola. 
-   public T pop() {
-        if (isEmpty()) {
-            return null;
-        }
-        T elemento = (T) head.getData();
-        Node<T> aux = head.getNext();
-        head = null;
-        head = aux;
-        size--;
-        if (isEmpty()) {
-            tail = null;
-        }
-        return elemento;
-    }
-    
-    public T get(int index) {
-        Node<T> buscado = new Node(index);
-        return buscado.getData();
-    }
-    
-    
-    
-    public Node getHead() {
-        return head;
+    private Node start;
+    private Node end;
+    private int size;
+
+    public Queue(Node start, Node end, int size) {
+        this.start = start;
+        this.end = end;
+        this.size = size;
     }
 
-    public void setHead(Node head) {
-        this.head = head;
+    public Node getStart() {
+        return start;
     }
 
-    public Node getTail() {
-        return tail;
+    public void setStart(Node start) {
+        this.start = start;
     }
 
-    public void setTail(Node tail) {
-        this.tail = tail;
+    public Node getEnd() {
+        return end;
+    }
+
+    public void setEnd(Node end) {
+        this.end = end;
     }
 
     public int getSize() {
@@ -83,4 +44,33 @@ public class Queue<T> {
         this.size = size;
     }
     
+    public boolean isEmpty(){
+        return start == null;
+    }
+    
+    public void enqueue(T data){
+        Node newNode = new Node(data);
+        if(isEmpty()){
+            start = newNode;
+            end = newNode;
+        }
+        else{
+            end.setNext(newNode);
+            end = newNode;
+        }
+        size++;
+    }
+    
+    public T dequeue(){
+        if(isEmpty()){
+            return null;
+        }
+        else{
+            T data = (T) start.getData();
+            Node newStart = start.getNext();
+            start.setNext(null);
+            start = newStart;
+            return data;
+        }
+    }
 }

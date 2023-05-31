@@ -7,6 +7,7 @@ package Classes;
 
 import Classes.Util;
 import DataStructures.Graph;
+import DataStructures.List;
 import GraphicInterface.LoadFile;
 
 
@@ -24,7 +25,10 @@ public class TestProyecto {
         LoadFile inter = new LoadFile();
         inter.setVisible(true);
         
-        Graph graph = inter.getGraph();
+        
+        
+        
+        
      
     }
     

@@ -17,7 +17,6 @@ public class Graph {
     //Atributos de la clase
     private List<Vperson> allPerson;
     private int count;
-
     
     //Constructor: no se pasa nada por parametro
     public Graph() {
@@ -41,8 +40,6 @@ public class Graph {
     public void setCount(int count) {
         this.count = count;
     }
-    
-    
     
 
     //====================Procedimientos y Metodos===================
@@ -95,8 +92,8 @@ public class Graph {
     //Agregar una arista al grafo
     public void addEdge(int start, int end, int weight){
         try{
-            Vperson personStart = allPerson.get(findPositionInt(start));
-            Vperson personEnd = allPerson.get(findPositionInt(end));
+            Vperson personStart = allPerson.get(findPositionVnum(start));
+            Vperson personEnd = allPerson.get(findPositionVnum(end));
             if(start == end){
                 JOptionPane.showMessageDialog(null, "Error: no se admite relacion con un mismo vertice");
             }
@@ -119,7 +116,7 @@ public class Graph {
                         pAux.setAdyList(adyList);
                         allPerson.replace(position, pAux);                             
                     }
-                }           
+                }
             }
         }
         catch(Exception e){
@@ -129,7 +126,7 @@ public class Graph {
     }
     
     //Encuentra la posicion del vertice en la lista apartir de su nombre
-    public int findPositionStr(String name){
+    public int findPositionName(String name){
         for(int x = 0; x < allPerson.len(); x++){
             if(allPerson.get(x).getName().equals(name)){
                 return x;
@@ -138,8 +135,9 @@ public class Graph {
         return -1;
     }
     
+    
     //Encuentra la posicion del vertice en la lista apartir de su numero
-    public int findPositionInt(int Vnum){
+    public int findPositionVnum(int Vnum){
         for(int x = 0; x < allPerson.len(); x++){
             if(allPerson.get(x).getVnum() == Vnum){
                 return x;
@@ -148,9 +146,31 @@ public class Graph {
         return -1;
     }
     
+    //Obtiene la persona a partir de su numero
+    public Vperson findPersonVnum(int Vnum){
+        for(int x = 0; x < allPerson.len(); x++){
+            Vperson person = allPerson.get(x);
+            if(person.getVnum() == Vnum){
+                return person;
+            }
+        }
+        return null;
+    }
+    
+    //Obtiene la persona a partir de su nombre
+    public Vperson findPersonName(String name){
+        for(int x = 0; x < allPerson.len(); x++){
+            Vperson person = allPerson.get(x);
+            if(person.getName().equals(name)){
+                return person;
+            }
+        }
+        return null;
+    }
+    
     //Retorna el numero del vertice apartir de su nombre
-    public int findVnum(String name){
-        int position = findPositionStr(name);
+    public int nameToVnum(String name){
+        int position = findPositionName(name);
         
         Vperson person = allPerson.get(position);
         
@@ -158,7 +178,7 @@ public class Graph {
     }
     
     //Retorna el nombre del vertice apartir de su numero
-    public String findName(int Vnum){
+    public String VnumToName(int Vnum){
         for(int x = 0; x < allPerson.len(); x++){
             if(allPerson.get(x).getVnum() == Vnum){
                 return allPerson.get(x).getName();
@@ -172,7 +192,7 @@ public class Graph {
         boolean deleted = false;
         Vperson auxPerson = null;
         
-        int position = findPositionStr(name);
+        int position = findPositionName(name);
         if(position != -1){
             auxPerson = allPerson.get(position);
             allPerson.pop(position);
@@ -239,7 +259,7 @@ public class Graph {
             else if(vertice.getAdyList().len() > 1){
                 for(int y = 0; y < vertice.getAdyList().len(); y++){
                     Edge arista = (Edge) vertice.getAdyList().get(y);
-                    String name = findName(arista.getEnd());
+                    String name = VnumToName(arista.getEnd());
                     if(y == vertice.getAdyList().len()-1){
                         System.out.println(" y " + name);    
                     }
@@ -254,46 +274,88 @@ public class Graph {
             else{
                 for(int y = 0; y < vertice.getAdyList().len(); y++){
                     Edge arista = (Edge) vertice.getAdyList().get(y);
-                    System.out.println(findName(arista.getEnd()));
+                    System.out.println(VnumToName(arista.getEnd()));
                 }
             }
         }
     }
-    //Función que hace el recorrido del grafo por anchura, con la estructura de dato 
-   public String bfs() {
-        Vperson first = allPerson.get(0);
-        Queue<Vperson> queue = new Queue<>();
-        queue.encolar(first);
-        String cont = first.getName()+ " ";
-        first.setIsVisited(true);
-        while (!queue.isEmpty()) {
-            Vperson v = queue.pop();
-            Vperson aux;
-            while ((aux = getNoVisited(v)) != null) {
-                aux.setIsVisited(true);
-                cont += aux.getName()+ " ";
-                queue.encolar(aux);
-            }
+    
+    //Retorna un valor booleano dependiendo de si los vertices estan conectados o no
+    public boolean isConectedName(String nameA, String nameB){
+        Vperson personA = findPersonName(nameA);
+        Vperson personB = findPersonName(nameB);
+        
+        List listAdyA = personA.getAdyList();
+        List listAdyB = personB.getAdyList();
+        
+        int VnumA = personA.getVnum();
+        int VnumB = personB.getVnum();
+        
+        for(int x = 0; x < listAdyA.len(); x++){           
+           Edge edgeA = (Edge) listAdyA.get(x);
+           if(edgeA.getStart() == VnumB || edgeA.getEnd() == VnumB){
+               return true;
+           }
         }
-        cleanVisited();
-        return cont;
+        
+        for(int x = 0; x < listAdyB.len(); x++){           
+           Edge edgeB = (Edge) listAdyB.get(x);
+           if(edgeB.getStart() == VnumA || edgeB.getEnd() == VnumA){
+               return true;
+           }
+        }
+        return false;
     }
     
-     public Vperson getNoVisited(Vperson v) {
-        for (int x = 0; x < allPerson.len(); x++) {
-            Vperson person = allPerson.get(x);
-            if (v.getAdyList().existStr(person.getName()) && (person.getIsVisited()== false)) {
-                return person;
-            }
+    //Retorna un valor booleano dependiendo de si los vertices estan conectados o no
+    public boolean isConectedVnum(int VnumA, int VnumB){
+        Vperson personA = findPersonVnum(VnumA);
+        Vperson personB = findPersonVnum(VnumB);
+        
+        List listAdyA = personA.getAdyList();
+        List listAdyB = personB.getAdyList();
+        
+        for(int x = 0; x < listAdyA.len(); x++){           
+           Edge edgeA = (Edge) listAdyA.get(x);
+           if(edgeA.getStart() == VnumB || edgeA.getEnd() == VnumB){
+               return true;
+           }
         }
-        return null;
+        
+        for(int x = 0; x < listAdyB.len(); x++){           
+           Edge edgeB = (Edge) listAdyB.get(x);
+           if(edgeB.getStart() == VnumA || edgeB.getEnd() == VnumA){
+               return true;
+           }
+        }
+        return false;
     }
     
-     public void cleanVisited(){ 
-         for (int x = 0; x < allPerson.len(); x++){
-             Vperson person = allPerson.get(x);
-             person.setIsVisited(false);
-             allPerson.replace(x, person);
-         }
-     }
+    public int allConections(Vperson personA){
+        int count = 0;
+        for(int x = 0; x < allPerson.len(); x++){
+            Vperson personB = allPerson.get(x);
+            if(isConectedName(personA.getName(), personB.getName())){
+                count++;
+            }
+        }
+        return count-1;    
+    }
+    
+    public void BFS(){
+        Vperson person = allPerson.get(0);
+        List adyList = person.getAdyList();
+        
+        if(adyList.len() != allConections(person)){
+            for(int x = 0; x < allPerson.len(); x++){
+                
+            }
+        }
+        
+        
+    }
+    
+    
+    
+    
 }
