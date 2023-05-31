@@ -5,7 +5,6 @@
  */
 package DataStructures;
 
-import Classes.Vperson;
 import javax.swing.JOptionPane;
 
 /**
@@ -287,7 +286,7 @@ public class List<T> {
     }
     
     ////Retorna un valor booleano dependiendo si del valor pasado por parametro existe en la lista
-    public boolean existNumeric(T data){
+    public boolean existNum(T data){
         if(head.getData() == data){
             return true;
         }
@@ -306,7 +305,7 @@ public class List<T> {
         return false;
     }
     
-
+    
     
     
     
