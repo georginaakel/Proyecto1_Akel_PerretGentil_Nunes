@@ -41,23 +41,35 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
 
+        jTextArea1.setBackground(new java.awt.Color(255, 204, 0));
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(0, 0, 204));
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 300, 140));
 
+        jTextArea2.setBackground(new java.awt.Color(255, 204, 0));
         jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        jTextArea2.setForeground(new java.awt.Color(0, 0, 204));
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, -1, -1));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 300, 130));
 
+        jButton1.setBackground(new java.awt.Color(255, 204, 0));
+        jButton1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 204));
         jButton1.setText("BFS");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 100, 40));
 
+        DFS.setBackground(new java.awt.Color(255, 204, 0));
+        DFS.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        DFS.setForeground(new java.awt.Color(0, 0, 204));
         DFS.setText("DFS");
-        getContentPane().add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, -1, -1));
+        getContentPane().add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, 90, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/3.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

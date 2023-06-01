@@ -47,18 +47,20 @@ public class InterfaceMain extends javax.swing.JFrame {
         System.setProperty("org.graphstream.ui", "swing");
         Graph grafoview = new SingleGraph("Tutorial 1");
         Node < Vperson> aux = graph.getAllPerson().getHead();
-        for (int i = 0; i < graph.getAllPerson().getSize(); i++) {
-            grafoview.addNode(aux.getData().getName());
-            grafoview.getNode(aux.getData().getName()).setAttribute("ui.label", "Usuario " + aux.getData().getName());
+        for (int i = 0; i < graph.getAllPerson().getSize(); i++){
+            grafoview.addNode(Integer.toString(aux.getData().getVnum()));
+            grafoview.getNode(Integer.toString(aux.getData().getVnum())).setAttribute("ui.label", aux.getData().getName());          
             aux = aux.getNext();
         }
         
         aux = graph.getAllPerson().getHead();
-        for (int i = 0; i < graph.getAllPerson().getSize(); i++) {
+        
+        
+        for (int i = 0; i < graph.getAllPerson().getSize(); i++){
             Node < Edge > aux2 = aux.getData().getAdyList().getHead();
-            for (int j = 0; j < aux.getData().getAdyList().getSize(); j++) {
-                grafoview.addEdge(Integer.toString(aux2.getData().getStart() + aux2.getData().getEnd()), Integer.toString(aux2.getData().getStart()) , Integer.toString(aux2.getData().getEnd()));
-                grafoview.getEdge(aux2.getData().getStart() + aux2.getData().getEnd()).setAttribute("ui.label", aux2.getData().getWeight());
+            for (int j = 0; j < aux.getData().getAdyList().getSize(); j++){
+                grafoview.addEdge(Integer.toString(aux2.getData().getStart()) + Integer.toString(aux2.getData().getEnd()) , Integer.toString(aux2.getData().getStart()) , Integer.toString(aux2.getData().getEnd()));
+                grafoview.getEdge(Integer.toString(aux2.getData().getStart()) + Integer.toString(aux2.getData().getEnd())).setAttribute("ui.label", aux2.getData().getWeight());
                 aux2 = aux2.getNext();
             }
             aux = aux.getNext();
