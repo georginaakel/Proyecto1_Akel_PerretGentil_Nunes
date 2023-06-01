@@ -43,11 +43,13 @@ public class InterfaceMain extends javax.swing.JFrame {
         this.graph = graph;
     }
     
+    
     public void CrearGraphView(){
+        Util u = new Util();
         System.setProperty("org.graphstream.ui", "swing");
         Graph grafoview = new SingleGraph("Tutorial 1");
-        Node < Vperson> aux = graph.getAllPerson().getHead();
-        for (int i = 0; i < graph.getAllPerson().getSize(); i++){
+        Node<Vperson> aux = graph.getAllPerson().getHead();
+        for (int x = 0; x < graph.getAllPerson().getSize(); x++){
             grafoview.addNode(Integer.toString(aux.getData().getVnum()));
             grafoview.getNode(Integer.toString(aux.getData().getVnum())).setAttribute("ui.label", aux.getData().getName());          
             aux = aux.getNext();
@@ -56,15 +58,27 @@ public class InterfaceMain extends javax.swing.JFrame {
         aux = graph.getAllPerson().getHead();
         
         
-        for (int i = 0; i < graph.getAllPerson().getSize(); i++){
-            Node < Edge > aux2 = aux.getData().getAdyList().getHead();
-            for (int j = 0; j < aux.getData().getAdyList().getSize(); j++){
-                grafoview.addEdge(Integer.toString(aux2.getData().getStart()) + Integer.toString(aux2.getData().getEnd()) , Integer.toString(aux2.getData().getStart()) , Integer.toString(aux2.getData().getEnd()));
-                grafoview.getEdge(Integer.toString(aux2.getData().getStart()) + Integer.toString(aux2.getData().getEnd())).setAttribute("ui.label", aux2.getData().getWeight());
-                aux2 = aux2.getNext();
+        for (int x = 0; x < graph.getAllPerson().getSize(); x++){
+            Node<Edge> aux2 = aux.getData().getAdyList().getHead();
+            for (int y = 0; y < aux.getData().getAdyList().getSize(); y++){
+                int num = u.generateID(graph);
+                boolean run = true;
+                if(aux2.getData().isRead()){
+                    while(run){
+                        try{
+                            grafoview.addEdge(Integer.toString(num) , Integer.toString(aux2.getData().getStart()) , Integer.toString(aux2.getData().getEnd()));
+                            grafoview.getEdge(Integer.toString(num)).setAttribute("ui.label", aux2.getData().getWeight());
+                            aux2 = aux2.getNext();
+                            run = false;
+                        }
+                        catch(Exception e){
+                            num = u.generateID(graph);
+                        }                   
+                    }
+                }
             }
             aux = aux.getNext();
-            }
+        }
     
         Viewer viewer = grafoview.display();
         viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);

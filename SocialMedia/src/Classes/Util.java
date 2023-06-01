@@ -5,6 +5,7 @@
  */
 package Classes;
 
+import DataStructures.Grafo;
 import DataStructures.List;
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,6 +15,8 @@ import javax.swing.JFileChooser;
 import static javax.swing.JFileChooser.APPROVE_OPTION;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -22,7 +25,7 @@ import javax.swing.filechooser.FileSystemView;
 public class  Util {
     
 
-    
+    //Retorna un string de la ruta de acceso del archivo txt
     public String ObtenerRutaTXT() {
         String fileRoute; 
         JFileChooser fi = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -45,28 +48,25 @@ public class  Util {
     }
     
     public void WriteTxt(List allPerson,String fileRoute) {
-        if ("".equals(fileRoute))
-        {
+        if ("".equals(fileRoute)){
             JOptionPane.showMessageDialog(null, "Error! No hay ruta de acceso.");
-        } else
-        {
+        } 
+        else{
             String str = "Usuarios\n";
-            if (allPerson.isEmpty() == false)
-            {
-                for (int x = 0; x < allPerson.len(); x++)
-                {
+            if (allPerson.isEmpty() == false){
+                for (int x = 0; x < allPerson.len(); x++){
                     Vperson person = (Vperson) allPerson.get(x);
-                    str = str + person.getVnum() + "," + person.getName() + "\n";
+                    str = str + person.getVnum() + ", " + person.getName() + "\n";
                 }
                 str = str + "Relaciones\n";
-                for (int x = 0; x < allPerson.len(); x++)
-                {
+                for (int x = 0; x < allPerson.len(); x++){
                     Vperson person = (Vperson) allPerson.get(x);
                     List auxList = person.getAdyList();
-                    for (int y = 0; y < auxList.len(); y++)
-                    {
+                    for (int y = 0; y < auxList.len(); y++){
                         Edge edge = (Edge) auxList.get(y);
-                        str = str + Integer.toString(edge.getStart()) + "," + Integer.toString(edge.getEnd()) + "," + Integer.toString(edge.getWeight()) + "\n";
+                        if(edge.isRead()){
+                            str += Integer.toString(edge.getStart()) + ", " + Integer.toString(edge.getEnd()) + ", " + Integer.toString(edge.getWeight()) + "\n";                                             
+                        }
                     }
                 }
             }
@@ -102,7 +102,7 @@ public class  Util {
                 if ("".equals(str) == false) {
                     String[] str_split = str.split("\n");
                     for (int x = 0; x < str_split.length; x++) {
-                        String[] Str = str_split[x].split(",");
+                        String[] Str = str_split[x].split(", ");
                         Vperson person = new Vperson(Integer.parseInt(Str[0]), Str[1]);
                         persons.append(person);
                     }
@@ -145,8 +145,9 @@ public class  Util {
                 if ("".equals(str) == false) {
                     String[] str_split = str.split("\n");
                     for (int x = 0; x < str_split.length; x++) {
-                        String[] Str = str_split[x].split(",");
+                        String[] Str = str_split[x].split(", ");
                         Edge newEdge = new Edge(Integer.parseInt(Str[0]), Integer.parseInt(Str[1]), Integer.parseInt(Str[2]));
+                        newEdge.setRead(true);
                         relations.append(newEdge);
                     }
                 }
@@ -161,16 +162,50 @@ public class  Util {
     }
     
     public static boolean isNumeric(String str) {
-    if (str == null || str.isEmpty()) {
-        return false;
-    }
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
 
-    try {
-        Double.parseDouble(str);
-        return true;
-    } catch (NumberFormatException e) {
-        return false;
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
-}
+    
+    public int generateID(Grafo graph){
+        List allPerson = graph.getAllPerson();
+        List allVnums = new List();
+        int num = (int) (Math.random()*999+1);
+        
+        for(int x = 0; x < allPerson.len(); x++){
+            Vperson person = (Vperson) allPerson.get(x);
+            allVnums.append(person.getVnum());         
+        }
+        
+        while(allVnums.exist(num)){
+            num = (int) (Math.random()*999+1);
+        }
+        
+        return num;
+    }
+    
+    public int generateIDforEdge(Grafo graph){
+        List allPerson = graph.getAllPerson();
+        List allVnums = new List();
+        int num = (int) (Math.random()*999+1);
+        
+        for(int x = 0; x < allPerson.len(); x++){
+            Vperson person = (Vperson) allPerson.get(x);
+            allVnums.append(person.getVnum());         
+        }
+        
+        while(allVnums.exist(num)){
+            num = (int) (Math.random()*999+1);
+        }
+        
+        return num;
+    }
     
 }

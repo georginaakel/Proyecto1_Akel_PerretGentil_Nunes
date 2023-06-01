@@ -35,8 +35,10 @@ public class InputName extends javax.swing.JFrame {
     
     public void addVperson(){
         Vnum = (int) (Math.random()*999 + 1);
-        
-        graph.addPerson(Vnum, Vname);
+        boolean run = graph.addPerson(Vnum, Vname);        
+//        while(!run){
+//            run = graph.addPerson(Vnum, Vname);
+//        }
     }
     
     public void deleteVperson(){

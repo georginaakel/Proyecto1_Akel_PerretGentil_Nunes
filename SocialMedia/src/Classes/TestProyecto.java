@@ -21,9 +21,14 @@ public class TestProyecto {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here      
+        
+        //Se crea un obejeto de la interfaz para cargar archivo y se hace visible   
         LoadFile inter = new LoadFile();
         inter.setVisible(true);
+        
+        String str = "hola";
+        boolean a = str.contains("hol");
+        System.out.println(a);
                
         
         
