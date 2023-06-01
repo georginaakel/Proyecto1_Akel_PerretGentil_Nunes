@@ -8,8 +8,9 @@ import DataStructures.Grafo;
 
 
 /**
- *
- * @author Orveo Di Luca
+ * Clase App 
+ * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
+ * @version 31/05/2023
  */
 public class App {   
     

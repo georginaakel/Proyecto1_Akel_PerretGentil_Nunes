@@ -16,8 +16,9 @@ import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.ui.view.Viewer;
 
 /**
- *
- * @author Georgina
+ * Esta interfaz contiene el menu principal que permite navegar en el programa
+ * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
+ * @version 31/05/2023
  */
 public class InterfaceMain extends javax.swing.JFrame {
     private Util util; 
@@ -26,6 +27,8 @@ public class InterfaceMain extends javax.swing.JFrame {
 
     /**
      * Creates new form InterfaceMain
+     * @param graph
+     * @param fileRoute
      */
     public InterfaceMain(Grafo graph, String fileRoute) {
         initComponents();
@@ -35,15 +38,25 @@ public class InterfaceMain extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
+    /**
+     * Esta función obtiene el grafo
+     * @return el grafo 
+     */
     public Grafo getGraph() {
         return graph;
     }
 
+    /**
+     * Esta función cambia el grafo
+     * @param graph 
+     */
     public void setGraph(Grafo graph) {
         this.graph = graph;
     }
     
-    
+    /**
+     * función que crea y muestra el grafo mediante la libreria de GraphStream
+     */
     public void CrearGraphView(){
         Util u = new Util();
         System.setProperty("org.graphstream.ui", "swing");
@@ -223,23 +236,35 @@ public class InterfaceMain extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Llama a la función de cargar archivo
+     * @param evt 
+     */
     private void ActualizarPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarPersonActionPerformed
         util.WriteTxt(graph.getAllPerson(),fileRoute);
     }//GEN-LAST:event_ActualizarPersonActionPerformed
-
+    /**
+     * Conduce a la interfaz de InputName
+     * @param evt 
+     */
     private void AddPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPersonActionPerformed
         InputName inter3 = new InputName(graph, fileRoute, 0);
         inter3.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_AddPersonActionPerformed
-
+    /**
+     * Conduce a la interfaz de InputName
+     * @param evt 
+     */
     private void deleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUserActionPerformed
         InputName inter3 = new InputName(graph, fileRoute, 1);
         inter3.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_deleteUserActionPerformed
-
+    /**
+     * Conduce a la interfaz de InputEdge
+     * @param evt 
+     */
     private void addRelationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRelationActionPerformed
         InputEdge inter4 = new InputEdge(graph, fileRoute);
         this.dispose();
@@ -254,7 +279,10 @@ public class InterfaceMain extends javax.swing.JFrame {
         graph.printGraph();
         System.out.println(" ");
     }//GEN-LAST:event_printActionPerformed
-
+    /**
+     * Conduce a la interfaz de LoadFile
+     * @param evt 
+     */
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         LoadFile in1 = new LoadFile();
         in1.setVisible(true);
