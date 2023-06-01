@@ -17,6 +17,7 @@ public class Grafo {
     //Atributos de la clase
     private List<Vperson> allPerson;
     private int count;
+   
     
     //Constructor: no se pasa nada por parametro
     public Grafo() {
@@ -45,21 +46,19 @@ public class Grafo {
     //====================Procedimientos y Metodos===================
     
     //Agregar un vertice al grafo
-    public void addPerson(int Vnum, String name){
+    public boolean addPerson(int Vnum, String name){
         Vperson person = new Vperson(Vnum, name);       
-        if(allPerson.isEmpty() == true){
+        boolean run = true;
+        if(allPerson.isEmpty()){
             allPerson.append(person);
         }
         else{
-            boolean run = true;
             for(int x = 0; x < allPerson.len(); x++){
                 Vperson pAux = (Vperson) allPerson.get(x);
                 if(pAux.getVnum() == Vnum){
-                    JOptionPane.showMessageDialog(null, "Error: numero de vertice ya registrado");
                     run = false;
                 }
                 if(pAux.getName().equals(name)){
-                    JOptionPane.showMessageDialog(null, "Error: nombre de vertice ya registrado");
                     run = false;
                 }
             }
@@ -67,6 +66,7 @@ public class Grafo {
                 allPerson.append(person);
             }     
         }
+        return run;
     }
     
     //Retorna un valor booleano dependiendo de si la Arista pasada por parametro existe en la adyList del vertice pasado por parametro
@@ -92,18 +92,26 @@ public class Grafo {
     //Agregar una arista al grafo
     public void addEdge(int start, int end, int weight){
         try{
+            
             Vperson personStart = allPerson.get(findPositionVnum(start));
             Vperson personEnd = allPerson.get(findPositionVnum(end));
+            
             if(start == end){
                 JOptionPane.showMessageDialog(null, "Error: no se admite relacion con un mismo vertice");
             }
+            
+            else if(weight < 0){
+                JOptionPane.showMessageDialog(null, "Error: valor ingresado en relacion no valido");
+            }
 
-            else if(allPerson.isEmpty() == true){
+            else if(allPerson.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Error: no hay vertices");
             }
-            else if(edgeExist(start, end, personStart) == true || edgeExist(start, end, personEnd) == true){
+            
+            else if(edgeExist(start, end, personStart) || edgeExist(start, end, personEnd)){
                 JOptionPane.showMessageDialog(null, "Error: relacion ya establecida con anterioridad");
-            }           
+            }   
+            
             else{
                 for(int x = 0; x < allPerson.len(); x++){
                     int position = x;
@@ -111,6 +119,15 @@ public class Grafo {
 
                     if(pAux.getVnum() == start){
                         Edge edge = new Edge(start, end, weight);
+                        edge.setRead(true);
+                        List adyList = pAux.getAdyList();
+                        adyList.append(edge);
+                        pAux.setAdyList(adyList);
+                        allPerson.replace(position, pAux);                             
+                    }
+                    if(pAux.getVnum() == end){
+                        Edge edge = new Edge(start, end, weight);
+                        edge.setRead(false);
                         List adyList = pAux.getAdyList();
                         adyList.append(edge);
                         pAux.setAdyList(adyList);
@@ -121,8 +138,7 @@ public class Grafo {
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: dato ingresado incorrecto");
-        }
-        
+        }       
     }
     
     //Encuentra la posicion del vertice en la lista apartir de su nombre
@@ -188,64 +204,62 @@ public class Grafo {
     }
     
     //Borra un vertice apartir de su nombre
-    public void deletePersonByName(String name){     
-        boolean deleted = false;
-        Vperson auxPerson = null;
+    public void deletePersonByName(String name){ 
+        Vperson person = null;
+        for(int x = 0; x < allPerson.len(); x++){          
+            if(allPerson.get(x).getName().equals(name)){
+                person = allPerson.get(x);
+                allPerson.pop(x);
+            }            
+        }
         
-        int position = findPositionName(name);
-        if(position != -1){
-            auxPerson = allPerson.get(position);
-            allPerson.pop(position);
-            deleted = true;
-
-            for(int x = 0; x < allPerson.len(); x++){
-                Vperson person = allPerson.get(x);
-                List adyList = person.getAdyList();
-                if(adyList.len() > 0){
-                    for(int y = 0; y < adyList.len(); y++){
-                        Edge edge = (Edge) adyList.get(y);
-                        if(edge.getEnd() == auxPerson.getVnum()){
-                            adyList.pop(y);
-                            person.setAdyList(adyList);
-                            allPerson.replace(x, person);
-                        }
+        if(person == null){
+            JOptionPane.showMessageDialog(null, "Error: persona no encontrada en el grafo");
+        }
+        else{
+            for (int x = 0; x < allPerson.len(); x++) {
+                Vperson pAux = allPerson.get(x);
+                List adyList = pAux.getAdyList();
+                for(int y = 0; y < adyList.len(); y++){
+                    Edge edge = (Edge) adyList.get(y);
+                    if(edge.getStart() == person.getVnum() || edge.getEnd() == person.getVnum()){
+                        adyList.pop(y);
+                        pAux.setAdyList(adyList);
+                        allPerson.replace(x, pAux);
                     }
                 }
-            }
-
-        }           
-        else if(deleted == false || position == -1){
-            JOptionPane.showMessageDialog(null, "Error: vertice no encontrado");
-        }
+            }       
+        }       
     }
     
-    //Borra un vertice apartir de su numero
-    public void deletePersonByInt(int Vnum){
-        boolean deleted = false;
+    //Borra un vertice apartir de su nombre
+    public void deletePersonByVnum(int num){ 
+        Vperson person = null;
         for(int x = 0; x < allPerson.len(); x++){
-            Vperson person = allPerson.get(x);
-            if(person.getVnum() == Vnum){
+            Vperson p = allPerson.get(x);
+            if(p.getVnum() == num){
+                person = allPerson.get(x);
                 allPerson.pop(x);
-                deleted = true;
-            }
+            }            
         }
         
-        for(int x = 0; x < allPerson.len(); x++){
-            Vperson person = allPerson.get(x);
-            List adyList = person.getAdyList();
-            for(int y = 0; y < adyList.len(); y++){
-                Edge edge = (Edge) adyList.get(y);
-                if(edge.getEnd() == Vnum){
-                    adyList.pop(y);
-                    person.setAdyList(adyList);
-                    allPerson.replace(0, person);
+        if(person == null){
+            JOptionPane.showMessageDialog(null, "Error: persona no encontrada en el grafo");
+        }
+        else{
+            for (int x = 0; x < allPerson.len(); x++) {
+                Vperson pAux = allPerson.get(x);
+                List adyList = pAux.getAdyList();
+                for(int y = 0; y < adyList.len(); y++){
+                    Edge edge = (Edge) adyList.get(y);
+                    if(edge.getStart() == person.getVnum() || edge.getEnd() == person.getVnum()){
+                        adyList.pop(y);
+                        pAux.setAdyList(adyList);
+                        allPerson.replace(x, pAux);
+                    }
                 }
-            }
-        }
-        
-        if(deleted == false){
-            JOptionPane.showMessageDialog(null, "Error: vertice no encontrado");
-        }
+            }       
+        }       
     }
     
     //Imprime el grafo en la consola
@@ -331,6 +345,7 @@ public class Grafo {
         return false;
     }
     
+    //Retorna el numero de relaciones que tiene un vertice
     public int allConections(Vperson personA){
         int count = 0;
         for(int x = 0; x < allPerson.len(); x++){
@@ -342,18 +357,7 @@ public class Grafo {
         return count-1;    
     }
     
-    public void BFS(){
-        Vperson person = allPerson.get(0);
-        List adyList = person.getAdyList();
-        
-        if(adyList.len() != allConections(person)){
-            for(int x = 0; x < allPerson.len(); x++){
-                
-            }
-        }
-        
-        
-    }
+
     
     
     

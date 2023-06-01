@@ -286,7 +286,7 @@ public class List<T> {
     }
     
     ////Retorna un valor booleano dependiendo si del valor pasado por parametro existe en la lista
-    public boolean existNum(T data){
+    public boolean exist(T data){
         if(head.getData() == data){
             return true;
         }
