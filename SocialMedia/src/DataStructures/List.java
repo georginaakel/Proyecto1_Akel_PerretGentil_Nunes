@@ -8,75 +8,114 @@ package DataStructures;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Juan
+ * En esta clase se contienen las listas y sus métodos correspondientes utilizados a lo largo del proyecto
+ * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
  * @param <T>
+ * @version 31/05/2023
  */
 public class List<T> {
-    //Atributos de la clase
+
     private Node head;
     private Node tail;
     private int size;
     
-    //Constructor 1: no recibe nada por parametros 
+    /**
+     * Constructor 1 de la clase Lista, no recibe nada por parámetros
+     */
     public List() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
     
-    //Constructor 2: recibe uno o mas datos para ser guardados en la lista cuando se inicialize
+    /**
+     * Constructor 2 de la clase Lista, recibe uno o mas datos para ser guardados en la lista cuando se inicialize
+     * @param data
+     */
     public List(T... data) {
         for (T elemento : data) {
             append(elemento);
         }
     }
     
-    //Getters and Setters
+    /**
+     * Obtiene el primer nodo de la lista
+     * @return el primero nodo de la lista
+     */
     public Node getHead() {
         return head;
     }
 
+    /**
+     * Establece el primer nodo de la lista
+     * @param head el nodo que se quiere establecer como primero
+     */
     public void setHead(Node head) {
         this.head = head;
     }
 
+    /**
+     * Retorna el último nodo de la lista
+     * @return el último nodo de la lista
+     */
     public Node getTail() {
         return tail;
     }
 
+    /**
+     * Establece el último nodo de la lista
+     * @param tail el nodo que se quiere establecer como último
+     */
     public void setTail(Node tail) {
         this.tail = tail;
     }
 
+    /**
+     * Obtiene el tamaño de la lista
+     * @return tamaño de la lista
+     */
     public int getSize() {
         return size;
     }
 
+    /**
+     * Establece el tamaño de la lista
+     * @param size el tamaño a ser establecido
+     */
     public void setSize(int size) {
         this.size = size;
     }
     
-    //Procedimientos y Metodos
     
-    //Dice si la lista esta vacia o no
+    /**
+     * Método que verifica si la lista está vacía
+     * @return si la lista está vacía o hay elementos en ella
+     */
     public boolean isEmpty(){
         return head == null;
     }
     
-    //Retorna el tamaño de la lista
+    /**
+     * Método que obtiene el tamaño de la lista
+     * @return el tamaño de la lista
+     */
     public int len(){
         return getSize();
     }
     
-    //Borra la lista
+    /**
+     * Método que borra la lista
+     */
     public void delete(){
         head = null;
         tail = null;
         size = 0;
     }
     
-    //Agrega un elemento al final de la lista
+    /**
+     * Método que agrega un elemento al final de la lista
+     * @param data
+     */
     public final void append(T data){
         Node newNode = new Node(data);
         if(isEmpty() == true){
@@ -91,7 +130,10 @@ public class List<T> {
         }
     }
     
-    //Agrega un elemento al incio de la lista
+    /**
+     * Método que agrega un elemento al incio de la lista
+     * @param data
+     */
     public void preappend(T data){
         Node newNode = new Node(data);
         if(isEmpty() == true){
@@ -106,7 +148,11 @@ public class List<T> {
         }
     }
     
-    //Obtiene un valor de la posicion indicada de la lista
+    /**
+     * Método que obtiene un valor de la posición indicada de la lista
+     * @param position posición de la lista cuya información se quiere saber
+     * @return información del dato en la posición dada
+     */
     public T get(int position){
         Node pointer = head;
         if(position < 0 || position >= len()){
@@ -126,7 +172,9 @@ public class List<T> {
         }
     }
     
-    //Imprime en pantalla la lista
+    /**
+     * Método que imprime en pantalla una lista completa
+     */
     public void print(){
         Node pointer = head;
         if(isEmpty() == true){
@@ -147,7 +195,11 @@ public class List<T> {
         }
     }
     
-    //Inserta un elemento en la posicion indicada
+    /**
+     * Método que inserta un elemento en una posición indicada de una lista
+     * @param position posición de la lista en la cual se desea insertar el nuevo nodo
+     * @param data información del nodo
+     */
     public void insert(int position, T data){
         boolean run = true;
         Node newNode = new Node(data);
@@ -174,7 +226,11 @@ public class List<T> {
         }
     }
     
-    //Reemplaza un elemento de la posicion indicada de la lista por otro
+    /**
+     * Método que reemplaza un elemento de la posición indicada de la lista por otro
+     * @param position posición de la lista en la cual se desea reemplazar el nodo
+     * @param data nueva información del nodo
+     */
     public void replace(int position, T data){
         boolean run = true;
  
@@ -203,7 +259,10 @@ public class List<T> {
         }
     }
     
-    //Elimina un elemento de la posicion indicada de la lista
+    /**
+     * Método que elimina un elemento de la posición indicada de la lista
+     * @param position posición de la lista en la cual se encuentra el nodo que se quiere eliminar
+     */
     public void pop(int position){
         Node pointer = head;
         if(position == 0){
@@ -227,6 +286,11 @@ public class List<T> {
         }
     }
     
+    /**
+     * Método que con la información del nodo busca su posición en la lista
+     * @param data información del nodo cuya posición de la lista se quiere encontrar
+     * @return posición del nodo de acuerdo a la información dada
+     */
     public int find(T data){
         if(head.getData() == data){
             return 0;
@@ -246,6 +310,11 @@ public class List<T> {
         return 0;
     }
     
+    /**
+     * Método que con la información dada busca su posición en la lista
+     * @param data información del nodo cuya posición de la lista se quiere encontrar
+     * @return posición del nodo de acuerdo a la información dada
+     */
     public int findVperson(String data){
         if(head.getData().equals(data)){
             return 0;
@@ -265,7 +334,11 @@ public class List<T> {
         return -1;
     }
     
-    //Retorna un valor booleano dependiendo si del string pasado por parametro existe en la lista
+    /**
+     * Método que identifica si un string pasado por parametro existe en la lista
+     * @param data string que se quiere saber si está o no en la lista
+     * @return booleano dependiendo de si existe o no el string en la lista
+     */
     public boolean existStr(String data){
         if(head.getData().equals(data) == true){
             return true;
@@ -285,7 +358,11 @@ public class List<T> {
         return false;
     }
     
-    ////Retorna un valor booleano dependiendo si del valor pasado por parametro existe en la lista
+    /**
+     * Método que identifica si un valor pasado por parametro existe en la lista
+     * @param data información que se quiere saber si está o no en la lista
+     * @return booleano dependiendo de si existe o no el valor en la lista
+     */
     public boolean exist(T data){
         if(head.getData() == data){
             return true;

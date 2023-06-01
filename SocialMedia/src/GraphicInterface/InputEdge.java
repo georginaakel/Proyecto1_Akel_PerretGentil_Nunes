@@ -9,8 +9,9 @@ import DataStructures.Grafo;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Juan
+ * Esta interfaz tiene la función de agregar arcos dentro del grafo
+ * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
+ * @version 31/05/2023
  */
 public class InputEdge extends javax.swing.JFrame {
     private int start;
@@ -21,7 +22,9 @@ public class InputEdge extends javax.swing.JFrame {
     private boolean run;
     
     /**
-     * Creates new form InputEdge
+     * Crea la interfaz
+     * @param graph
+     * @param fileRoute
      */
     public InputEdge(Grafo graph, String fileRoute) {
         initComponents();
@@ -31,6 +34,9 @@ public class InputEdge extends javax.swing.JFrame {
         this.run = false;
     }
     
+    /**
+     * Agrega una relacion en el grafo
+     */
     public void addRelation(){
         try{       
             start = graph.nameToVnum(startInput.getText());
@@ -140,14 +146,20 @@ public class InputEdge extends javax.swing.JFrame {
     private void startInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_startInputActionPerformed
-
+    /**
+     * Conduce a la interfaz de InterfaceMain despues de crear una ruta
+     * @param evt 
+     */
     private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
         addRelation();
         InterfaceMain in1 = new InterfaceMain(graph, fileRoute);
         this.dispose();
         in1.setVisible(true);
     }//GEN-LAST:event_finishActionPerformed
-
+    /**
+     * Conduce a la interfaz de InterfaceMain 
+     * @param evt 
+     */
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         this.dispose();
         InterfaceMain inter2 = new InterfaceMain(graph, fileRoute);

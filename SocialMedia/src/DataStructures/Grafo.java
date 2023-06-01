@@ -10,42 +10,63 @@ import Classes.Vperson;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Juan
+ * En esta clase se contienen la implementacion de los grafos y sus métodos correspondientes utilizados a lo largo del proyecto
+ * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
+ * @version 31/05/2023
  */
 public class Grafo {
-    //Atributos de la clase
+
     private List<Vperson> allPerson;
     private int count;
    
     
-    //Constructor: no se pasa nada por parametro
+    /**
+     *Constructor de la clase Grafo
+     */
     public Grafo() {
         this.allPerson = new List();
         this.count = 0;
     }  
     
-    //================Getters and Setters==================
+    /**
+     * Método que retorna la lista de personas del grafo
+     * @return la lista de personas
+     */
     public List getAllPerson() {
         return allPerson;
     }
 
+    /**
+     * Método que establece la lista principal del grafo
+     * @param allPerson la lista principal a ser establecida en el grafo
+     */
     public void setAllPerson(List allPerson) {
         this.allPerson = allPerson;
     }
 
+    /**
+     * Método que obtiene el número de vértices del grafo
+     * @return el número de vértices
+     */
     public int getCount() {
         return count;
     }
 
+    /**
+     * Método para establecer el número de vértices
+     * @param count el número de vértices que se quiere establecer
+     */
     public void setCount(int count) {
         this.count = count;
     }
     
-
-    //====================Procedimientos y Metodos===================
     
-    //Agregar un vertice al grafo
+    /**
+     * Método para agregar una persona 
+     * @param Vnum número del vertice
+     * @param name nombre de la persona
+     * @return booleano al ser agregado o no 
+     */
     public boolean addPerson(int Vnum, String name){
         Vperson person = new Vperson(Vnum, name);       
         boolean run = true;
@@ -69,7 +90,13 @@ public class Grafo {
         return run;
     }
     
-    //Retorna un valor booleano dependiendo de si la Arista pasada por parametro existe en la adyList del vertice pasado por parametro
+    /**
+     * Método que revisa si la arista pasada por parametro existe en la adyList del vertice pasado por parametro
+     * @param start número de vértice de inicio
+     * @param end número de vértice del final
+     * @param person
+     * @return valor booleano dependiendo de si la Arista pasada por parametro existe o no
+     */
     public boolean edgeExist(int start, int end, Vperson person){
         List adyList = person.getAdyList();
         if(adyList.isEmpty() == true){
@@ -89,7 +116,12 @@ public class Grafo {
         }
     }
     
-    //Agregar una arista al grafo
+    /**
+     * Método que agrega una arista al grafo
+     * @param start número de vértice inicial
+     * @param end número de vértice  final
+     * @param weight peso de la relacion
+     */
     public void addEdge(int start, int end, int weight){
         try{
             
@@ -141,7 +173,11 @@ public class Grafo {
         }       
     }
     
-    //Encuentra la posicion del vertice en la lista apartir de su nombre
+    /**
+     * Método que encuentra la posicion del vertice en la lista a partir de su nombre
+     * @param name nombre del vertice
+     * @return posicion del vertice
+     */
     public int findPositionName(String name){
         for(int x = 0; x < allPerson.len(); x++){
             if(allPerson.get(x).getName().equals(name)){
@@ -152,7 +188,11 @@ public class Grafo {
     }
     
     
-    //Encuentra la posicion del vertice en la lista apartir de su numero
+    /**
+     * Método que encuentra la posicion del vertice en la lista a partir de su número
+     * @param Vnum número del vertice
+     * @return posicion del vertice
+     */
     public int findPositionVnum(int Vnum){
         for(int x = 0; x < allPerson.len(); x++){
             if(allPerson.get(x).getVnum() == Vnum){
@@ -162,7 +202,11 @@ public class Grafo {
         return -1;
     }
     
-    //Obtiene la persona a partir de su numero
+    /**
+     * Método que encuentra a la persona a partir de su número
+     * @param Vnum número del vertice
+     * @return persona o null si esta no se encuentra
+     */
     public Vperson findPersonVnum(int Vnum){
         for(int x = 0; x < allPerson.len(); x++){
             Vperson person = allPerson.get(x);
@@ -173,7 +217,11 @@ public class Grafo {
         return null;
     }
     
-    //Obtiene la persona a partir de su nombre
+    /**
+     * Método que encuentra a la persona a partir de su nombre
+     * @param name nombre de la persona
+     * @return persona o null si esta no se encuentra
+     */
     public Vperson findPersonName(String name){
         for(int x = 0; x < allPerson.len(); x++){
             Vperson person = allPerson.get(x);
@@ -184,7 +232,11 @@ public class Grafo {
         return null;
     }
     
-    //Retorna el numero del vertice apartir de su nombre
+    /**
+     * Método que encuentra el número del vertice a partir de su nombre
+     * @param name nombre del vertice
+     * @return número del vertice o null si este no se encuentra
+     */
     public int nameToVnum(String name){
         int position = findPositionName(name);
         
@@ -193,7 +245,11 @@ public class Grafo {
         return person.getVnum();
     }
     
-    //Retorna el nombre del vertice apartir de su numero
+    /**
+     * Método que encuentra nombre del vertice a partir de su número
+     * @param Vnum número del vertice
+     * @return nombre del vertice o null si este no se encuentra
+     */
     public String VnumToName(int Vnum){
         for(int x = 0; x < allPerson.len(); x++){
             if(allPerson.get(x).getVnum() == Vnum){
@@ -203,7 +259,10 @@ public class Grafo {
         return null;
     }
     
-    //Borra un vertice apartir de su nombre
+    /**
+     * Método que borra un vertice a partir de su nombre
+     * @param name nombre del vertice
+     */
     public void deletePersonByName(String name){ 
         Vperson person = null;
         for(int x = 0; x < allPerson.len(); x++){          
@@ -232,7 +291,10 @@ public class Grafo {
         }       
     }
     
-    //Borra un vertice apartir de su nombre
+    /**
+     * Método que borra un vertice a partir de su número
+     * @param num número del vertice
+     */
     public void deletePersonByVnum(int num){ 
         Vperson person = null;
         for(int x = 0; x < allPerson.len(); x++){
@@ -262,7 +324,9 @@ public class Grafo {
         }       
     }
     
-    //Imprime el grafo en la consola
+    /**
+     * Método que imprime el grafo en la consola
+     */
     public void printGraph(){
         for(int x = 0; x < allPerson.len(); x++){
             Vperson vertice = allPerson.get(x);
@@ -294,7 +358,12 @@ public class Grafo {
         }
     }
     
-    //Retorna un valor booleano dependiendo de si los vertices estan conectados o no
+    /**
+     * Método que evalúa si dos vertices están o no conectados mediante los nombres
+     * @param nameA persona A
+     * @param nameB persona B
+     * @return valor booleano dependiendo de si los vertices están conectados o no
+     */
     public boolean isConectedName(String nameA, String nameB){
         Vperson personA = findPersonName(nameA);
         Vperson personB = findPersonName(nameB);
@@ -321,7 +390,12 @@ public class Grafo {
         return false;
     }
     
-    //Retorna un valor booleano dependiendo de si los vertices estan conectados o no
+    /**
+     * Método que evalúa si dos vertices están o no conectados mediante los números del vertice
+     * @param VnumA número del vertice A
+     * @param VnumB número del vertice B
+     * @return valor booleano dependiendo de si los vertices están conectados o no
+     */
     public boolean isConectedVnum(int VnumA, int VnumB){
         Vperson personA = findPersonVnum(VnumA);
         Vperson personB = findPersonVnum(VnumB);
@@ -345,7 +419,11 @@ public class Grafo {
         return false;
     }
     
-    //Retorna el numero de relaciones que tiene un vertice
+    /**
+     * Método que cuenta el número de relaciones que tiene un vertice
+     * @param personA número del vertice A
+     * @return número de relaciones que tiene el vertice dado
+     */
     public int allConections(Vperson personA){
         int count = 0;
         for(int x = 0; x < allPerson.len(); x++){

@@ -13,8 +13,9 @@ import DataStructures.List;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Juan
+ * En esta interfaz se carga el archivo TXT necesario para inicializar el programa
+ * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
+ * @version 31/05/2023
  */
 public class LoadFile extends javax.swing.JFrame {
     private String fileRoute; 
@@ -31,23 +32,41 @@ public class LoadFile extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
+    /**
+     * Esta función obtiene la ruta del archivo TXT
+     * @return un string con la ruta del archivo TXT
+     */
     public String getFileRoute() {
         return fileRoute;
     }
     
+    /**
+     * Esta función cambia la ruta del archivo TXT
+     * @param fileRoute  ruta del archivo TXT
+     */
     public void setFileRoute(String fileRoute) {
         this.fileRoute = fileRoute;
     }
     
+    /**
+     * Esta función obtiene el grafo
+     * @return el grafo 
+     */
     public Grafo getGraph() {
         return graph;
     }
 
+    /**
+     * Esta función cambia el grafo
+     * @param graph 
+     */
     public void setGraph(Grafo graph) {
         this.graph = graph;
     }
  
-    
+    /**
+     * Esta función obtiene la ruta del archivo TXT 
+     */
     public void getRoute(){       
         Util u = new Util();
         loaded = false;
@@ -59,6 +78,9 @@ public class LoadFile extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Esta función procesa el archivo TXT seleccionado, leyendo su información
+     */
     public void loadTXT(){       
         Util u = new Util();
         List newAllPerson = u.read_users(fileRoute);       
@@ -145,7 +167,10 @@ public class LoadFile extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Conduce a la interfaz de InterfaceMain si el archivo se carga con exito
+     * @param evt 
+     */
     private void loadFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFileActionPerformed
         getRoute();
         loadTXT();

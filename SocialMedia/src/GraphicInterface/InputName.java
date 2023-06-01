@@ -12,8 +12,9 @@ import DataStructures.List;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author Juan
+ * En esta interfaz se gestionan los usuarios utilizados en el programa
+ * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
+ * @version 31/05/2023
  */
 public class InputName extends javax.swing.JFrame {
     private String Vname;
@@ -22,8 +23,12 @@ public class InputName extends javax.swing.JFrame {
     private static String fileRoute;
     private boolean run;
     private static int option;
+    
     /**
      * Creates new form Inter3
+     * @param graph
+     * @param fileRoute
+     * @param option
      */
     public InputName(Grafo graph, String fileRoute, int option) {
         initComponents();
@@ -33,6 +38,9 @@ public class InputName extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
+    /**
+     * función que crea el número de vertice para una persona y la agrega al grafo
+     */
     public void addVperson(){
         Vnum = (int) (Math.random()*999 + 1);
         boolean run = graph.addPerson(Vnum, Vname);        
@@ -41,10 +49,17 @@ public class InputName extends javax.swing.JFrame {
 //        }
     }
     
+    /**
+     * función que elimina una persona
+     */
     public void deleteVperson(){
         graph.deletePersonByName(Vname);
     }
     
+    /**
+     * función que asigna el nombre de una persona
+     * @return booleano 
+     */
     public boolean setNamePerson(){
         String name = nameInput.getText();
         System.out.println("\n");
@@ -120,7 +135,10 @@ public class InputName extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Conduce a la interfaz de InterfaceMain despues de agregar o eliminar a un usuario
+     * @param evt 
+     */
     private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
         run = setNamePerson();
         if(run == true){

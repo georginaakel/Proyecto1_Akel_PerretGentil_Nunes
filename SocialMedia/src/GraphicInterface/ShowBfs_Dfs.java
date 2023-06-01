@@ -5,8 +5,9 @@
 package GraphicInterface;
 
 /**
- *
- * @author Georgina
+ * Esta interfaz es la encargada de mostrar los recorridos BFS y DFS
+ * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
+ * @version 31/05/2023
  */
 public class ShowBfs_Dfs extends javax.swing.JFrame {
 

@@ -19,13 +19,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- *
- * @author Juan
+ * Clase con métodos que serán utilizados a lo largo del proyecto
+ * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
+ * @version 31/05/2023
  */
 public class  Util {
-    
-
-    //Retorna un string de la ruta de acceso del archivo txt
+        
+    /** 
+    * Método que obtiene la ruta de acceso del archivo txt
+    * @return string de la ruta de acceso del archivo txt
+    */
     public String ObtenerRutaTXT() {
         String fileRoute; 
         JFileChooser fi = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -47,6 +50,11 @@ public class  Util {
         return fileRoute;
     }
     
+    /** 
+    * Método que escribe sobre el archivo txt
+    * @param allPerson
+    * @param fileRoute
+    */
     public void WriteTxt(List allPerson,String fileRoute) {
         if ("".equals(fileRoute)){
             JOptionPane.showMessageDialog(null, "Error! No hay ruta de acceso.");
@@ -80,6 +88,11 @@ public class  Util {
         }
     }
     
+    /** 
+    * Método que lee el archivo y agrega los usuarios a la lista de personas
+    * @param fileRoute
+    * @return lista de personas
+    */
     public List read_users(String fileRoute){
         List persons = new List();
         
@@ -118,6 +131,12 @@ public class  Util {
         
     }
     
+    /** 
+    * Método que lee y agrega las relaciones a la lista de relaciones
+    * @param allPerson 
+    * @param fileRoute
+    * @return lista de relaciones
+    */
     public List read_relations(List allPerson, String fileRoute) {
         List relations = new List();
         String line;
@@ -161,6 +180,11 @@ public class  Util {
         return relations;
     }
     
+    /** 
+    * Método que identifica si un string es de carácter numérico 
+    * @param str 
+    * @return True si es numérico o False si no es numérico o es nulo
+    */
     public static boolean isNumeric(String str) {
         if (str == null || str.isEmpty()) {
             return false;
@@ -174,6 +198,11 @@ public class  Util {
         }
     }
     
+    /** 
+    * Método que genera un número de ID para un vertice en la libreria GraphStream 
+    * @param graph 
+    * @return el número generado 
+    */
     public int generateID(Grafo graph){
         List allPerson = graph.getAllPerson();
         List allVnums = new List();
@@ -191,6 +220,11 @@ public class  Util {
         return num;
     }
     
+    /** 
+    * Método que genera un número de ID para el edge de la libreria GraphStream
+    * @param graph 
+    * @return el número generado
+    */
     public int generateIDforEdge(Grafo graph){
         List allPerson = graph.getAllPerson();
         List allVnums = new List();
