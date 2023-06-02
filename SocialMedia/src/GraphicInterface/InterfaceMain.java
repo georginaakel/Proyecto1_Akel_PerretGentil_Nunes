@@ -277,7 +277,6 @@ public class InterfaceMain extends javax.swing.JFrame {
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
         graph.printGraph();
-        System.out.println(" ");
     }//GEN-LAST:event_printActionPerformed
     /**
      * Conduce a la interfaz de LoadFile
@@ -294,7 +293,9 @@ public class InterfaceMain extends javax.swing.JFrame {
     }//GEN-LAST:event_CloseButtonActionPerformed
 
     private void BFSyDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSyDFSActionPerformed
-        // TODO add your handling code here:
+        ShowBfs_Dfs inter6 = new ShowBfs_Dfs(graph, fileRoute);
+        inter6.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_BFSyDFSActionPerformed
 
     private void ShowGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowGraphActionPerformed

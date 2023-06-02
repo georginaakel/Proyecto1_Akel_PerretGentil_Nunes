@@ -13,11 +13,14 @@ public class Vperson {
     private List<Edge> AdyList;
     private int Vnum;
     private String name;
+    private boolean visited;
 
     public Vperson(int Vnum, String name) {
         this.AdyList = new List();
         this.Vnum = Vnum;
         this.name = name;
+        this.visited = false;
+        
     }
 
     /** 
@@ -75,6 +78,24 @@ public class Vperson {
     public void setName(String name) {
         this.name = name;
     }
+    
+    /** 
+    * Método que retorna un valor booleando dependiendo de si el vetice fue visitado
+    * @return true o false
+    */
+    public boolean isVisited() {
+        return visited;
+    }
+    
+    /** 
+    * Método que cambia el valor booleando dependiendo de si fue visitado o no
+    * @param visited nuevo valor booleando del vertice
+    */
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+    
+    
     
     
     

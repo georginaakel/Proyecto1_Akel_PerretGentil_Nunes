@@ -4,17 +4,23 @@
  */
 package GraphicInterface;
 
+import DataStructures.Grafo;
+
 /**
  * Esta interfaz es la encargada de mostrar los recorridos BFS y DFS
  * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
  * @version 31/05/2023
  */
 public class ShowBfs_Dfs extends javax.swing.JFrame {
+    private static Grafo graph;
+    private static String fileRoute;
 
     /**
      * Creates new form ShowBfs_Dfs
      */
-    public ShowBfs_Dfs() {
+    public ShowBfs_Dfs(Grafo graph, String fileRoute) {
+        this.graph = graph;
+        this.fileRoute = fileRoute;
         initComponents();
     }
 
@@ -29,10 +35,10 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textAreaBFS = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        textAreaDFS = new javax.swing.JTextArea();
+        bfs = new javax.swing.JButton();
         DFS = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -42,34 +48,44 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
 
-        jTextArea1.setBackground(new java.awt.Color(255, 204, 0));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(0, 0, 204));
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        textAreaBFS.setBackground(new java.awt.Color(255, 204, 0));
+        textAreaBFS.setColumns(20);
+        textAreaBFS.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        textAreaBFS.setForeground(new java.awt.Color(0, 0, 204));
+        textAreaBFS.setRows(5);
+        jScrollPane1.setViewportView(textAreaBFS);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 300, 140));
 
-        jTextArea2.setBackground(new java.awt.Color(255, 204, 0));
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(0, 0, 204));
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        textAreaDFS.setBackground(new java.awt.Color(255, 204, 0));
+        textAreaDFS.setColumns(20);
+        textAreaDFS.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        textAreaDFS.setForeground(new java.awt.Color(0, 0, 204));
+        textAreaDFS.setRows(5);
+        jScrollPane2.setViewportView(textAreaDFS);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 300, 130));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 0));
-        jButton1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 204));
-        jButton1.setText("BFS");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 100, 40));
+        bfs.setBackground(new java.awt.Color(255, 204, 0));
+        bfs.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        bfs.setForeground(new java.awt.Color(0, 0, 204));
+        bfs.setText("BFS");
+        bfs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bfsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(bfs, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 100, 40));
 
         DFS.setBackground(new java.awt.Color(255, 204, 0));
         DFS.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
         DFS.setForeground(new java.awt.Color(0, 0, 204));
         DFS.setText("DFS");
+        DFS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DFSActionPerformed(evt);
+            }
+        });
         getContentPane().add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, 90, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/3.png"))); // NOI18N
@@ -77,6 +93,17 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bfsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bfsActionPerformed
+        graph.clearVisited();
+        int islandsNum = graph.countIslandsBFS();
+        textAreaBFS.setText("El numero de islas es de: " + islandsNum);
+    }//GEN-LAST:event_bfsActionPerformed
+    private void DFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DFSActionPerformed
+        graph.clearVisited();
+        int islandsNum = graph.countIslandsDFS();
+        textAreaDFS.setText("El numero de islas es de: " + islandsNum);      
+    }//GEN-LAST:event_DFSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,19 +135,19 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ShowBfs_Dfs().setVisible(true);
+                new ShowBfs_Dfs(graph, fileRoute).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DFS;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton bfs;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea textAreaBFS;
+    private javax.swing.JTextArea textAreaDFS;
     // End of variables declaration//GEN-END:variables
 }

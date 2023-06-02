@@ -22,10 +22,10 @@ public class Queue<T> {
      * @param end
      * @param size
      */
-    public Queue(Node start, Node end, int size) {
-        this.start = start;
-        this.end = end;
-        this.size = size;
+    public Queue() {
+        this.start = null;
+        this.end = null;
+        this.size = 0;
     }
 
     /**
