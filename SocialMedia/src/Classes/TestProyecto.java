@@ -31,10 +31,17 @@ public class TestProyecto {
         String str = "hola";
         boolean a = str.contains("hol");
         System.out.println(a);
+        boolean run = true;
+        while(run){
+            run = false;
+            System.out.println("xdxdxdxd");
+        }
+        
+    }    
+        
+}
+        
+        
                
         
         
-     
-    }
-    
-}

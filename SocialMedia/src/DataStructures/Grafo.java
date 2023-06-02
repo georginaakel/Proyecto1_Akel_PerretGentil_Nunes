@@ -421,7 +421,7 @@ public class Grafo {
     
     /**
      * Método que cuenta el número de relaciones que tiene un vertice
-     * @param personA número del vertice A
+     * @param personA vertice A
      * @return número de relaciones que tiene el vertice dado
      */
     public int allConections(Vperson personA){
@@ -434,6 +434,123 @@ public class Grafo {
         }
         return count-1;    
     }
+    
+    /**
+     * Método que retorna las personas con las que tiene relaciones un vertice
+     * @param person vertice A
+     * @return una lista con las personas con las que esta relacionada
+     */
+    public List relations(Vperson person){
+        List allRelations = new List();
+        int VnumA = person.getVnum();
+        for(int x = 0; x < allPerson.len(); x++){
+            Vperson p = allPerson.get(x);
+            int VnumB = p.getVnum();
+            if(isConectedVnum(VnumA, VnumB) && VnumA != VnumB){
+                allRelations.append(p);
+            }
+        }
+        return allRelations;      
+    }
+    
+    /**
+     * Método que vuelve a settear el valor isVisited a true       
+     */
+    public void clearVisited(){
+        for (int x = 0; x < allPerson.len(); x++) {
+            Vperson p = allPerson.get(x);
+            p.setVisited(false);
+        }
+    }
+    
+    
+    /**
+     * Método que realiza el recorrido por anchura
+     * @param person vertice de inicio 
+     */
+    public void bfs(Vperson person){
+        Queue<Vperson> queue = new Queue();
+
+        queue.enqueue(person);
+        person.setVisited(true);
+        
+        while(!queue.isEmpty()){
+            Vperson p1 = queue.dequeue();
+            List adyList = relations(p1);
+            for(int y = 0; y < adyList.len(); y++){
+                    Vperson p2 = (Vperson) adyList.get(y);
+                    if(y != adyList.len()-1){
+                        System.out.print(p2.getVnum() + ", ");
+                    }
+                    else{
+                        System.out.println(p2.getVnum());
+                    }
+                }
+            for(int x = 0; x < adyList.len(); x++){
+                Vperson p2 = (Vperson) adyList.get(x);
+                if(!p2.isVisited()){
+                    p2.setVisited(true);
+                    queue.enqueue(p2);
+                }
+            }
+        }
+    }
+    
+    /**
+     * Método que realiza el recorrido por anchura y cuenta la cantidad de islas
+     * @return count contador de islas
+     */
+    public int countIslandsBFS(){
+        int count = 0;
+        
+        for(int x = 0; x < allPerson.len(); x++){
+            Vperson p = allPerson.get(x);
+            if(!p.isVisited()){
+                bfs(p);
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    /**
+     * Método que realiza el recorrido por profundidad
+     * @param person vertice de inicio 
+     */
+    public void dfs(Vperson person){
+        Stack stack = new Stack();
+        List adyList = relations(person);
+        
+        stack.push(person);
+        person.setVisited(true);
+        
+        for(int x = 0; x < adyList.len(); x++){
+            Vperson p = (Vperson) adyList.get(x);
+            if(!p.isVisited()){
+                dfs(p);
+            }
+        }
+    }
+    
+    /**
+     * Método que realiza el recorrido por profundida y cuenta la cantidad de islas
+     * @return count contador de islas
+     */
+    public int countIslandsDFS(){
+        int count = 0;
+        
+        for(int x = 0; x < allPerson.len(); x++){
+            Vperson p = allPerson.get(x);
+            if(!p.isVisited()){
+                dfs(p);
+                count++;
+            }
+        }
+        return count;
+    }
+
+    
+    
     
 
     
