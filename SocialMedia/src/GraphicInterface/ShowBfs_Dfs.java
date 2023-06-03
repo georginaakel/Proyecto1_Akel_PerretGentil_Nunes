@@ -21,8 +21,8 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
     public ShowBfs_Dfs(Grafo graph, String fileRoute) {
         this.graph = graph;
         this.fileRoute = fileRoute;
-        setLocationRelativeTo(null);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -57,7 +57,7 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
         textAreaBFS.setRows(5);
         jScrollPane1.setViewportView(textAreaBFS);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 300, 140));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 300, 140));
 
         textAreaDFS.setBackground(new java.awt.Color(255, 204, 0));
         textAreaDFS.setColumns(20);
@@ -66,7 +66,7 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
         textAreaDFS.setRows(5);
         jScrollPane2.setViewportView(textAreaDFS);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 300, 130));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 300, 130));
 
         bfs.setBackground(new java.awt.Color(255, 204, 0));
         bfs.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
@@ -77,7 +77,7 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
                 bfsActionPerformed(evt);
             }
         });
-        getContentPane().add(bfs, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 100, 40));
+        getContentPane().add(bfs, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 100, 40));
 
         DFS.setBackground(new java.awt.Color(255, 204, 0));
         DFS.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
@@ -88,7 +88,7 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
                 DFSActionPerformed(evt);
             }
         });
-        getContentPane().add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, 90, 40));
+        getContentPane().add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 540, 90, 40));
 
         Back.setBackground(new java.awt.Color(255, 204, 0));
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Regresar.png"))); // NOI18N
@@ -97,7 +97,7 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
                 BackActionPerformed(evt);
             }
         });
-        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 590, -1, -1));
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 600, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/3.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
