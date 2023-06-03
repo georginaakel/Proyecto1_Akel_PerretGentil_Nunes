@@ -28,14 +28,6 @@ public class TestProyecto {
         LoadFile inter = new LoadFile();
         inter.setVisible(true);
         
-        String str = "hola";
-        boolean a = str.contains("hol");
-        System.out.println(a);
-        boolean run = true;
-        while(run){
-            run = false;
-            System.out.println("xdxdxdxd");
-        }
         
     }    
         

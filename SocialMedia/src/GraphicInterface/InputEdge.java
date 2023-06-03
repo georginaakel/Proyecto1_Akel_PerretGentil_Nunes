@@ -38,9 +38,22 @@ public class InputEdge extends javax.swing.JFrame {
      * Agrega una relacion en el grafo
      */
     public void addRelation(){
-        try{       
-            start = graph.nameToVnum(startInput.getText());
-            end = graph.nameToVnum(endInput.getText());
+        try{      
+            String startStr = startInput.getText();
+            if(startStr.contains("@")){
+                startStr = startStr.replace("@", "");
+            }
+            
+            String endStr = endInput.getText();
+            if(endStr.contains("@")){
+                endStr = endStr.replace("@", "");
+            }
+            
+            startStr = "@" + startStr;
+            endStr = "@" + endStr;
+            
+            start = graph.nameToVnum(startStr);
+            end = graph.nameToVnum(endStr);
             weight = Integer.parseInt(weightInput.getText());
 
             graph.addEdge(start, end, weight);       

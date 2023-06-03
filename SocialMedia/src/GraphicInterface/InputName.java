@@ -44,9 +44,6 @@ public class InputName extends javax.swing.JFrame {
     public void addVperson(){
         Vnum = (int) (Math.random()*999 + 1);
         boolean run = graph.addPerson(Vnum, Vname);        
-//        while(!run){
-//            run = graph.addPerson(Vnum, Vname);
-//        }
     }
     
     /**
@@ -62,12 +59,15 @@ public class InputName extends javax.swing.JFrame {
      */
     public boolean setNamePerson(){
         String name = nameInput.getText();
-        System.out.println("\n");
         if(Util.isNumeric(name) == true){
             JOptionPane.showMessageDialog(null, "Error: tipo de dato incorrecto");
             return false;
         }
         else{
+            if(name.contains("@")){
+                name = name.replace("@", "");
+            }
+            name = "@" + name;
             Vname = name;
             return true;
         }
@@ -154,6 +154,11 @@ public class InputName extends javax.swing.JFrame {
                 InterfaceMain inter2 = new InterfaceMain(graph, fileRoute);
                 inter2.setVisible(true);               
             }
+        }
+        else{
+            this.dispose();
+            InterfaceMain inter2 = new InterfaceMain(graph, fileRoute);
+            inter2.setVisible(true);
         }
     }//GEN-LAST:event_finishActionPerformed
 

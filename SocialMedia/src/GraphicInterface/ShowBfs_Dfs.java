@@ -21,6 +21,7 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
     public ShowBfs_Dfs(Grafo graph, String fileRoute) {
         this.graph = graph;
         this.fileRoute = fileRoute;
+        setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -40,6 +41,7 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
         textAreaDFS = new javax.swing.JTextArea();
         bfs = new javax.swing.JButton();
         DFS = new javax.swing.JButton();
+        Back = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,6 +90,15 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
         });
         getContentPane().add(DFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, 90, 40));
 
+        Back.setBackground(new java.awt.Color(255, 204, 0));
+        Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Regresar.png"))); // NOI18N
+        Back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 590, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/3.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -104,6 +115,12 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
         int islandsNum = graph.countIslandsDFS();
         textAreaDFS.setText("El numero de islas es de: " + islandsNum);      
     }//GEN-LAST:event_DFSActionPerformed
+
+    private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
+        InterfaceMain in1 = new InterfaceMain(graph, fileRoute);
+        in1.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +158,7 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Back;
     private javax.swing.JButton DFS;
     private javax.swing.JButton bfs;
     private javax.swing.JLabel jLabel1;

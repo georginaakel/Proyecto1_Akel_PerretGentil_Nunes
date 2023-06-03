@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 public class Grafo {
 
     private List<Vperson> allPerson;
-    private int count;
    
     
     /**
@@ -25,7 +24,6 @@ public class Grafo {
      */
     public Grafo() {
         this.allPerson = new List();
-        this.count = 0;
     }  
     
     /**
@@ -43,23 +41,7 @@ public class Grafo {
     public void setAllPerson(List allPerson) {
         this.allPerson = allPerson;
     }
-
-    /**
-     * Método que obtiene el número de vértices del grafo
-     * @return el número de vértices
-     */
-    public int getCount() {
-        return count;
-    }
-
-    /**
-     * Método para establecer el número de vértices
-     * @param count el número de vértices que se quiere establecer
-     */
-    public void setCount(int count) {
-        this.count = count;
-    }
-    
+   
     
     /**
      * Método para agregar una persona 
@@ -171,6 +153,55 @@ public class Grafo {
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error: dato ingresado incorrecto");
         }       
+    }
+       
+    /**
+     * Método que agrega una arista al grafo
+     * @param personA número de vértice inicial
+     * @param personB número de vértice  final
+     */
+    public void deleteEdge(int personA, int personB){
+        try{
+            Vperson pA = findPersonVnum(personA);
+            Vperson pB = findPersonVnum(personB);
+
+            List adyListA = pA.getAdyList();
+            for (int x = 0; x < adyListA.len(); x++) {
+                Edge e = (Edge) adyListA.get(x);
+                if(e.getStart() == personA && e.getEnd() == personB){
+                    adyListA.pop(x);
+                    pA.setAdyList(adyListA);
+                    int position = findPositionVnum(pA.getVnum());
+                    allPerson.replace(position, pA);
+                }
+                if(e.getEnd() == personA && e.getStart() == personB){
+                    adyListA.pop(x);
+                    pA.setAdyList(adyListA);
+                    int position = findPositionVnum(pA.getVnum());
+                    allPerson.replace(position, pA);
+                }
+            }
+
+            List adyListB = pB.getAdyList();
+            for (int x = 0; x < adyListB.len(); x++) {
+                Edge e = (Edge) adyListB.get(x);
+                if(e.getStart() == personA && e.getEnd() == personB){
+                    adyListB.pop(x);
+                    pB.setAdyList(adyListB);
+                    int position = findPositionVnum(pB.getVnum());
+                    allPerson.replace(position, pB);
+                }
+                if(e.getEnd() == personA && e.getStart() == personB){
+                    adyListB.pop(x);
+                    pB.setAdyList(adyListB);
+                    int position = findPositionVnum(pB.getVnum());
+                    allPerson.replace(position, pB);
+                }
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: data ingresado no valido");
+        }
     }
     
     /**
@@ -287,7 +318,7 @@ public class Grafo {
                         allPerson.replace(x, pAux);
                     }
                 }
-            }       
+            }
         }       
     }
     
@@ -477,15 +508,6 @@ public class Grafo {
         while(!queue.isEmpty()){
             Vperson p1 = queue.dequeue();
             List adyList = relations(p1);
-            for(int y = 0; y < adyList.len(); y++){
-                    Vperson p2 = (Vperson) adyList.get(y);
-                    if(y != adyList.len()-1){
-                        System.out.print(p2.getVnum() + ", ");
-                    }
-                    else{
-                        System.out.println(p2.getVnum());
-                    }
-                }
             for(int x = 0; x < adyList.len(); x++){
                 Vperson p2 = (Vperson) adyList.get(x);
                 if(!p2.isVisited()){
@@ -494,6 +516,31 @@ public class Grafo {
                 }
             }
         }
+    }
+    
+    public Grafo copy(){
+        Grafo newGraph = new Grafo();
+        
+        for (int x = 0; x < allPerson.len(); x++) {
+            Vperson p = allPerson.get(x);
+            
+            String name = p.getName();
+            int Vnum = p.getVnum();
+            newGraph.addPerson(Vnum, name);
+        }
+        for (int x = 0; x < allPerson.len(); x++) {
+            Vperson p = allPerson.get(x);
+            List adyList = p.getAdyList();
+
+            for (int y = 0; y < adyList.len(); y++) {
+                Edge e = (Edge) adyList.get(y);
+                int start = e.getStart();
+                int end = e.getEnd();
+                int weight = e.getWeight();
+                newGraph.addEdge(start, end, weight);
+            }
+        }
+        return newGraph;
     }
     
     /**
@@ -548,6 +595,41 @@ public class Grafo {
         }
         return count;
     }
+    
+    
+    //Javadoc de esto (contador de puentes)
+    public String countBridges(){
+        String str = "";
+        List edges = new List();
+        int currentIslands = countIslandsBFS();
+        clearVisited();
+        
+        for (int x = 0; x < allPerson.len(); x++) {
+            Vperson p1 = allPerson.get(x);
+            List adyList = relations(p1);
+            
+            for (int y = 0; y < adyList.len(); y++) {
+                Grafo cGraph = copy();
+                Vperson p2 = (Vperson) adyList.get(y);
+                cGraph.deleteEdge(p1.getVnum(), p2.getVnum());
+                cGraph.deleteEdge(p2.getVnum(), p1.getVnum());
+                int islands = cGraph.countIslandsBFS();
+                cGraph.clearVisited();
+
+                if(islands != currentIslands){
+                    str += "La relacion entre " + p1.getName() + " y " + p2.getName() + " es un puente\n";                  
+                }
+            }
+            
+        }
+        return str;
+    }
+    
+
+       
+
+    
+    
 
     
     

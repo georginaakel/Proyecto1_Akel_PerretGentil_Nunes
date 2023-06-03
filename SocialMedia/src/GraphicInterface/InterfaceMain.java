@@ -11,6 +11,8 @@ import DataStructures.Grafo;
 import DataStructures.Node;
 import Classes.Edge;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.SingleGraph;
 import org.graphstream.ui.view.Viewer;
@@ -118,6 +120,8 @@ public class InterfaceMain extends javax.swing.JFrame {
         print = new javax.swing.JButton();
         Back = new javax.swing.JButton();
         CloseButton = new javax.swing.JButton();
+        deleteEdge = new javax.swing.JButton();
+        showBridges = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -231,8 +235,24 @@ public class InterfaceMain extends javax.swing.JFrame {
         });
         getContentPane().add(CloseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
+        deleteEdge.setText("Borrar relacion");
+        deleteEdge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteEdgeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(deleteEdge, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 130, 60));
+
+        showBridges.setText("Enseñar puentes");
+        showBridges.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showBridgesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(showBridges, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, 60));
+
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/2.png"))); // NOI18N
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -272,11 +292,11 @@ public class InterfaceMain extends javax.swing.JFrame {
     }//GEN-LAST:event_addRelationActionPerformed
 
     private void testActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testActionPerformed
-        System.out.println(graph.allConections((Vperson) graph.getAllPerson().get(1)));
+        graph.deleteEdge(412, 788);
     }//GEN-LAST:event_testActionPerformed
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
-        graph.printGraph();
+
     }//GEN-LAST:event_printActionPerformed
     /**
      * Conduce a la interfaz de LoadFile
@@ -309,6 +329,22 @@ public class InterfaceMain extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_ShowGraphActionPerformed
+
+    private void deleteEdgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEdgeActionPerformed
+        InputDeleteEdge inter7 = new InputDeleteEdge(graph, fileRoute);
+        inter7.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_deleteEdgeActionPerformed
+
+    private void showBridgesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showBridgesActionPerformed
+        String str = graph.countBridges();
+        JTextArea jta = new JTextArea(15, 30);
+        jta.setText(str);
+        jta.setEditable(false);
+        JScrollPane jsp = new JScrollPane(jta);
+        JOptionPane.showMessageDialog(null, jsp, "puentes", 1);
+        this.dispose();
+    }//GEN-LAST:event_showBridgesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -354,9 +390,11 @@ public class InterfaceMain extends javax.swing.JFrame {
     private javax.swing.JLabel Fondo;
     private javax.swing.JButton ShowGraph;
     private javax.swing.JButton addRelation;
+    private javax.swing.JButton deleteEdge;
     private javax.swing.JButton deleteUser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton print;
+    private javax.swing.JButton showBridges;
     private javax.swing.JButton test;
     // End of variables declaration//GEN-END:variables
 
