@@ -312,7 +312,7 @@ public class InterfaceMain extends javax.swing.JFrame {
         jta.setEditable(false);
         JScrollPane jsp = new JScrollPane(jta);
         JOptionPane.showMessageDialog(null, jsp, "puentes", 1);
-        this.dispose();
+  
     }//GEN-LAST:event_showBridgesActionPerformed
 
     /**
