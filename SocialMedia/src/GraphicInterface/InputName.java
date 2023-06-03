@@ -108,7 +108,7 @@ public class InputName extends javax.swing.JFrame {
                 nameInputActionPerformed(evt);
             }
         });
-        getContentPane().add(nameInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 238, -1));
+        getContentPane().add(nameInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 238, -1));
 
         finish.setBackground(new java.awt.Color(255, 204, 0));
         finish.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
@@ -119,7 +119,7 @@ public class InputName extends javax.swing.JFrame {
                 finishActionPerformed(evt);
             }
         });
-        getContentPane().add(finish, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, -1, -1));
+        getContentPane().add(finish, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 110, 40));
 
         back.setBackground(new java.awt.Color(255, 204, 0));
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Regresar.png"))); // NOI18N

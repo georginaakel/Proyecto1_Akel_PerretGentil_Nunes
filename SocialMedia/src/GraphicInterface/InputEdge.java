@@ -81,6 +81,8 @@ public class InputEdge extends javax.swing.JFrame {
         weightInput = new javax.swing.JTextField();
         finish = new javax.swing.JButton();
         back = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,17 +94,17 @@ public class InputEdge extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
         jLabel1.setText("Ingrese el primer usuario");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 204));
         jLabel2.setText("Ingrese el segundo usuario");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 204));
         jLabel3.setText("Ingrese los años de relacion ");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, -1, -1));
 
         startInput.setBackground(new java.awt.Color(255, 204, 0));
         startInput.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
@@ -111,11 +113,11 @@ public class InputEdge extends javax.swing.JFrame {
                 startInputActionPerformed(evt);
             }
         });
-        getContentPane().add(startInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 258, -1));
+        getContentPane().add(startInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 258, -1));
 
         endInput.setBackground(new java.awt.Color(255, 204, 0));
         endInput.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
-        getContentPane().add(endInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 258, -1));
+        getContentPane().add(endInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 258, -1));
 
         weightInput.setBackground(new java.awt.Color(255, 204, 0));
         weightInput.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
@@ -124,7 +126,7 @@ public class InputEdge extends javax.swing.JFrame {
                 weightInputActionPerformed(evt);
             }
         });
-        getContentPane().add(weightInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 258, -1));
+        getContentPane().add(weightInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 258, -1));
 
         finish.setBackground(new java.awt.Color(255, 204, 0));
         finish.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
@@ -135,7 +137,7 @@ public class InputEdge extends javax.swing.JFrame {
                 finishActionPerformed(evt);
             }
         });
-        getContentPane().add(finish, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, -1, -1));
+        getContentPane().add(finish, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, 110, 40));
 
         back.setBackground(new java.awt.Color(255, 204, 0));
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Regresar.png"))); // NOI18N
@@ -145,6 +147,16 @@ public class InputEdge extends javax.swing.JFrame {
             }
         });
         getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 580, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel5.setText("Para agregar una relación ambos usarios deben de existir,");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel6.setText("si deseas crear un nuevo usuario puedes hacerlo en \"Agregar persona\"");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/3.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -223,6 +235,8 @@ public class InputEdge extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField startInput;
     private javax.swing.JTextField weightInput;

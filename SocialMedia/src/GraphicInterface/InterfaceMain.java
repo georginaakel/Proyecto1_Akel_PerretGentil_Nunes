@@ -116,10 +116,7 @@ public class InterfaceMain extends javax.swing.JFrame {
         AddPerson = new javax.swing.JButton();
         deleteUser = new javax.swing.JButton();
         addRelation = new javax.swing.JButton();
-        test = new javax.swing.JButton();
-        print = new javax.swing.JButton();
         Back = new javax.swing.JButton();
-        CloseButton = new javax.swing.JButton();
         deleteEdge = new javax.swing.JButton();
         showBridges = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
@@ -140,7 +137,7 @@ public class InterfaceMain extends javax.swing.JFrame {
                 ActualizarPersonActionPerformed(evt);
             }
         });
-        getContentPane().add(ActualizarPerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
+        getContentPane().add(ActualizarPerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
 
         ShowGraph.setBackground(new java.awt.Color(255, 204, 0));
         ShowGraph.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
@@ -152,7 +149,7 @@ public class InterfaceMain extends javax.swing.JFrame {
                 ShowGraphActionPerformed(evt);
             }
         });
-        getContentPane().add(ShowGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 280, -1));
+        getContentPane().add(ShowGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 280, -1));
 
         BFSyDFS.setBackground(new java.awt.Color(255, 204, 0));
         BFSyDFS.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
@@ -164,7 +161,7 @@ public class InterfaceMain extends javax.swing.JFrame {
                 BFSyDFSActionPerformed(evt);
             }
         });
-        getContentPane().add(BFSyDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 280, -1));
+        getContentPane().add(BFSyDFS, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 280, -1));
 
         AddPerson.setBackground(new java.awt.Color(255, 204, 0));
         AddPerson.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
@@ -176,7 +173,7 @@ public class InterfaceMain extends javax.swing.JFrame {
                 AddPersonActionPerformed(evt);
             }
         });
-        getContentPane().add(AddPerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 380, 280, -1));
+        getContentPane().add(AddPerson, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 280, -1));
 
         deleteUser.setBackground(new java.awt.Color(255, 204, 0));
         deleteUser.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
@@ -188,7 +185,7 @@ public class InterfaceMain extends javax.swing.JFrame {
                 deleteUserActionPerformed(evt);
             }
         });
-        getContentPane().add(deleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 280, -1));
+        getContentPane().add(deleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 280, -1));
 
         addRelation.setBackground(new java.awt.Color(255, 204, 0));
         addRelation.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
@@ -200,23 +197,7 @@ public class InterfaceMain extends javax.swing.JFrame {
                 addRelationActionPerformed(evt);
             }
         });
-        getContentPane().add(addRelation, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 280, -1));
-
-        test.setText("prueba");
-        test.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                testActionPerformed(evt);
-            }
-        });
-        getContentPane().add(test, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 640, -1, -1));
-
-        print.setText("print");
-        print.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                printActionPerformed(evt);
-            }
-        });
-        getContentPane().add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 640, -1, -1));
+        getContentPane().add(addRelation, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, 280, -1));
 
         Back.setBackground(new java.awt.Color(255, 204, 0));
         Back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Regresar.png"))); // NOI18N
@@ -227,29 +208,29 @@ public class InterfaceMain extends javax.swing.JFrame {
         });
         getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 610, -1, -1));
 
-        CloseButton.setText("Close");
-        CloseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CloseButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CloseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
-
+        deleteEdge.setBackground(new java.awt.Color(255, 204, 0));
+        deleteEdge.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
+        deleteEdge.setForeground(new java.awt.Color(0, 0, 204));
+        deleteEdge.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/10.png"))); // NOI18N
         deleteEdge.setText("Borrar relacion");
         deleteEdge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteEdgeActionPerformed(evt);
             }
         });
-        getContentPane().add(deleteEdge, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 130, 60));
+        getContentPane().add(deleteEdge, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 590, 280, -1));
 
+        showBridges.setBackground(new java.awt.Color(255, 204, 0));
+        showBridges.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
+        showBridges.setForeground(new java.awt.Color(0, 0, 204));
+        showBridges.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/11.png"))); // NOI18N
         showBridges.setText("Enseñar puentes");
         showBridges.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showBridgesActionPerformed(evt);
             }
         });
-        getContentPane().add(showBridges, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, 60));
+        getContentPane().add(showBridges, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, 280, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/2.png"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
@@ -290,14 +271,6 @@ public class InterfaceMain extends javax.swing.JFrame {
         this.dispose();
         inter4.setVisible(true);
     }//GEN-LAST:event_addRelationActionPerformed
-
-    private void testActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testActionPerformed
-        graph.deleteEdge(412, 788);
-    }//GEN-LAST:event_testActionPerformed
-
-    private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
-
-    }//GEN-LAST:event_printActionPerformed
     /**
      * Conduce a la interfaz de LoadFile
      * @param evt 
@@ -307,10 +280,6 @@ public class InterfaceMain extends javax.swing.JFrame {
         in1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackActionPerformed
-
-    private void CloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseButtonActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_CloseButtonActionPerformed
 
     private void BFSyDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSyDFSActionPerformed
         ShowBfs_Dfs inter6 = new ShowBfs_Dfs(graph, fileRoute);
@@ -386,16 +355,13 @@ public class InterfaceMain extends javax.swing.JFrame {
     private javax.swing.JButton AddPerson;
     private javax.swing.JButton BFSyDFS;
     private javax.swing.JButton Back;
-    private javax.swing.JButton CloseButton;
     private javax.swing.JLabel Fondo;
     private javax.swing.JButton ShowGraph;
     private javax.swing.JButton addRelation;
     private javax.swing.JButton deleteEdge;
     private javax.swing.JButton deleteUser;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton print;
     private javax.swing.JButton showBridges;
-    private javax.swing.JButton test;
     // End of variables declaration//GEN-END:variables
 
 }
