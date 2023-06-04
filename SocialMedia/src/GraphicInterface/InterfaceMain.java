@@ -63,6 +63,7 @@ public class InterfaceMain extends javax.swing.JFrame {
         Util u = new Util();
         System.setProperty("org.graphstream.ui", "swing");
         Graph grafoview = new SingleGraph("Tutorial 1");
+        grafoview.setAttribute("ui.stylesheet", " graph {fill-color: #EEE; padding: 50px; } node {fill-color: white; size: 20px, 20px; shape: circle; stroke-mode: plain; stroke-color: white; stroke-width: 2px; text-alignment: center; text-color: blue; text-style: bold; text-size: 12;} edge {stroke-mode: plain; stroke-color: black; size: 1px; arrow-shape: arrow; arrow-size: 200000; text-alignment: above; text-color: blue; text-style: bold; text-size: 13; text-padding: 20;}");
         Node<Vperson> aux = graph.getAllPerson().getHead();
         for (int x = 0; x < graph.getAllPerson().getSize(); x++){
             grafoview.addNode(Integer.toString(aux.getData().getVnum()));
@@ -206,7 +207,7 @@ public class InterfaceMain extends javax.swing.JFrame {
                 BackActionPerformed(evt);
             }
         });
-        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 610, -1, -1));
+        getContentPane().add(Back, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 610, 60, -1));
 
         deleteEdge.setBackground(new java.awt.Color(255, 204, 0));
         deleteEdge.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
@@ -233,7 +234,7 @@ public class InterfaceMain extends javax.swing.JFrame {
         getContentPane().add(showBridges, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, 280, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/2.png"))); // NOI18N
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
