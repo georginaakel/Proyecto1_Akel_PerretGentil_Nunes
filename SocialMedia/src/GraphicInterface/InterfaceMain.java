@@ -63,7 +63,7 @@ public class InterfaceMain extends javax.swing.JFrame {
         Util u = new Util();
         System.setProperty("org.graphstream.ui", "swing");
         Graph grafoview = new SingleGraph("Tutorial 1");
-        grafoview.setAttribute("ui.stylesheet", " graph {fill-color: #EEE; padding: 50px; } node {fill-color: white; size: 20px, 20px; shape: circle; stroke-mode: plain; stroke-color: white; stroke-width: 2px; text-alignment: center; text-color: blue; text-style: bold; text-size: 12;} edge {stroke-mode: plain; stroke-color: black; size: 1px; arrow-shape: arrow; arrow-size: 200000; text-alignment: above; text-color: blue; text-style: bold; text-size: 13; text-padding: 20;}");
+        grafoview.setAttribute("ui.stylesheet", " graph {fill-color: #EEE; padding: 50px; } node {fill-color: white; size: 20px, 20px; shape: circle; stroke-mode: plain; stroke-color: white; stroke-width: 2px; text-alignment: center; text-color: red; text-style: bold; text-size: 12;} edge {stroke-mode: plain; stroke-color: black; size: 1px; arrow-shape: arrow; arrow-size: 200000; text-alignment: above; text-color: blue; text-style: bold; text-size: 13; text-padding: 20;}");
         Node<Vperson> aux = graph.getAllPerson().getHead();
         for (int x = 0; x < graph.getAllPerson().getSize(); x++){
             grafoview.addNode(Integer.toString(aux.getData().getVnum()));
