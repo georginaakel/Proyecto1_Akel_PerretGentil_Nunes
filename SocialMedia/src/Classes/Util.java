@@ -19,7 +19,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Clase con métodos que serán utilizados a lo largo del proyecto
+ * Clase con métodos que serán utilizados a lo largo del proyecto, relacionados al archivo TXT
  * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
  * @version 31/05/2023
  */

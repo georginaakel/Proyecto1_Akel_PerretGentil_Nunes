@@ -9,7 +9,7 @@ package DataStructures;
  * En esta clase se contienen las colas y sus métodos correspondientes utilizados a lo largo del proyecto
  * @param <T>
  * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
- * @version 31/05/2023
+ * @version 02/06/2023
  */
 public class Queue<T> {
     private Node start;
@@ -18,9 +18,6 @@ public class Queue<T> {
 
     /**
      * Constructor de la clase Queue
-     * @param start
-     * @param end
-     * @param size
      */
     public Queue() {
         this.start = null;

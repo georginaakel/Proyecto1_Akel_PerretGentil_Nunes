@@ -7,16 +7,16 @@ package GraphicInterface;
 import DataStructures.Grafo;
 
 /**
- * Esta interfaz es la encargada de mostrar los recorridos BFS y DFS
+ * Esta interfaz es la encargada de mostrar la cantidad de islas utilizando los recorridos BFS y DFS
  * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
- * @version 31/05/2023
+ * @version 03/06/2023
  */
 public class ShowBfs_Dfs extends javax.swing.JFrame {
     private static Grafo graph;
     private static String fileRoute;
 
     /**
-     * Creates new form ShowBfs_Dfs
+     * Crea la Interfaz
      */
     public ShowBfs_Dfs(Grafo graph, String fileRoute) {
         this.graph = graph;
@@ -104,7 +104,10 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Muestra la cantidad de islas utilizando el recorrido bfs
+     * @param evt 
+     */
     private void bfsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bfsActionPerformed
         graph.clearVisited();
         int islandsNum = graph.countIslandsBFS();
@@ -115,7 +118,10 @@ public class ShowBfs_Dfs extends javax.swing.JFrame {
         int islandsNum = graph.countIslandsDFS();
         textAreaDFS.setText("El numero de islas es de: " + islandsNum);      
     }//GEN-LAST:event_DFSActionPerformed
-
+    /**
+     * Conduce a la interfaz principal
+     * @param evt 
+     */
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
         InterfaceMain in1 = new InterfaceMain(graph, fileRoute);
         in1.setVisible(true);

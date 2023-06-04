@@ -23,19 +23,23 @@
             <word>agregar</word>
             <word>Akel</word>
             <word>almacenan</word>
+            <word>anchura</word>
             <word>apilado</word>
             <word>apilar</word>
             <word>archivo</word>
+            <word>arco</word>
             <word>arcos</word>
             <word>Arianne</word>
             <word>asigna</word>
             <word>asignado</word>
             <word>asignar</word>
             <word>atributo</word>
+            <word>bfs</word>
             <word>booleano</word>
             <word>borra</word>
             <word>busca</word>
             <word>cambia</word>
+            <word>cantidad</word>
             <word>carga</word>
             <word>cargar</word>
             <word>carácter</word>
@@ -45,8 +49,10 @@
             <word>completa</word>
             <word>conectados</word>
             <word>consola</word>
+            <word>conteo</word>
             <word>contiene</word>
             <word>contienen</word>
+            <word>copia</word>
             <word>Corresponde</word>
             <word>correspondientes</word>
             <word>crea</word>
@@ -73,6 +79,7 @@
             <word>encargada</word>
             <word>encolado</word>
             <word>encolar</word>
+            <word>encontrados</word>
             <word>encontrar</word>
             <word>encuentra</word>
             <word>esta</word>
@@ -109,7 +116,9 @@
             <word>inserta</word>
             <word>insertar</word>
             <word>interfaz</word>
+            <word>islas</word>
             <word>las</word>
+            <word>lectura</word>
             <word>leyendo</word>
             <word>leído</word>
             <word>libreria</word>
@@ -165,13 +174,17 @@
             <word>proyecto</word>
             <word>prueba</word>
             <word>próximo</word>
+            <word>puentes</word>
             <word>que</word>
             <word>quiere</word>
+            <word>realiza</word>
             <word>recibe</word>
+            <word>recorrido</word>
             <word>recorridos</word>
             <word>reemplaza</word>
             <word>reemplazar</word>
             <word>relacion</word>
+            <word>relacionados</word>
             <word>relaciones</word>
             <word>relación</word>
             <word>retorna</word>
@@ -180,6 +193,7 @@
             <word>se</word>
             <word>seleccionado</word>
             <word>serán</word>
+            <word>settear</word>
             <word>sido</word>
             <word>siendo</word>
             <word>siguiente</word>
@@ -196,6 +210,7 @@
             <word>usuario</word>
             <word>usuarios</word>
             <word>utilizados</word>
+            <word>utilizando</word>
             <word>vacia</word>
             <word>vacía</word>
             <word>verifica</word>

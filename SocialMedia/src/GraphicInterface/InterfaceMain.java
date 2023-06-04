@@ -20,7 +20,7 @@ import org.graphstream.ui.view.Viewer;
 /**
  * Esta interfaz contiene el menu principal que permite navegar en el programa
  * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
- * @version 31/05/2023
+ * @version 03/06/2023
  */
 public class InterfaceMain extends javax.swing.JFrame {
     private Util util; 
@@ -245,7 +245,7 @@ public class InterfaceMain extends javax.swing.JFrame {
         util.WriteTxt(graph.getAllPerson(),fileRoute);
     }//GEN-LAST:event_ActualizarPersonActionPerformed
     /**
-     * Conduce a la interfaz de InputName
+     * Conduce a la interfaz de InputName para agregar un usuario
      * @param evt 
      */
     private void AddPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPersonActionPerformed
@@ -254,7 +254,7 @@ public class InterfaceMain extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_AddPersonActionPerformed
     /**
-     * Conduce a la interfaz de InputName
+     * Conduce a la interfaz de InputName para eliminar un usuario
      * @param evt 
      */
     private void deleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUserActionPerformed
@@ -263,7 +263,7 @@ public class InterfaceMain extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_deleteUserActionPerformed
     /**
-     * Conduce a la interfaz de InputEdge
+     * Conduce a la interfaz de InputEdge para agregar una relacion
      * @param evt 
      */
     private void addRelationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRelationActionPerformed
@@ -280,13 +280,19 @@ public class InterfaceMain extends javax.swing.JFrame {
         in1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BackActionPerformed
-
+    /**
+     * Conduce a la interfaz de los recorridos BFS y DFS
+     * @param evt 
+     */
     private void BFSyDFSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BFSyDFSActionPerformed
         ShowBfs_Dfs inter6 = new ShowBfs_Dfs(graph, fileRoute);
         inter6.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BFSyDFSActionPerformed
-
+    /**
+     * Conduce a la interfaz a mostrar el grafo
+     * @param evt 
+     */
     private void ShowGraphActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowGraphActionPerformed
         // TODO add your handling code here:
         try {
@@ -298,13 +304,19 @@ public class InterfaceMain extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_ShowGraphActionPerformed
-
+    /**
+     * Conduce a la interfaz de eliminar una relacion
+     * @param evt 
+     */
     private void deleteEdgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEdgeActionPerformed
         InputDeleteEdge inter7 = new InputDeleteEdge(graph, fileRoute);
         inter7.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_deleteEdgeActionPerformed
-
+    /**
+     * Conduce a la interfaz a mostrar los puentes del grafo
+     * @param evt 
+     */
     private void showBridgesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showBridgesActionPerformed
         String str = graph.countBridges();
         JTextArea jta = new JTextArea(15, 30);
@@ -312,7 +324,7 @@ public class InterfaceMain extends javax.swing.JFrame {
         jta.setEditable(false);
         JScrollPane jsp = new JScrollPane(jta);
         JOptionPane.showMessageDialog(null, jsp, "puentes", 1);
-        this.dispose();
+  
     }//GEN-LAST:event_showBridgesActionPerformed
 
     /**

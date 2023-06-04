@@ -8,15 +8,18 @@ package GraphicInterface;
 import DataStructures.Grafo;
 
 /**
- *
- * @author Juan
+ * Esta interfaz tiene la función de eliminar arcos dentro del grafo
+ * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
+ * @version 03/06/2023
  */
 public class InputDeleteEdge extends javax.swing.JFrame {
     private static Grafo graph;
     private static String fileRoute;
 
     /**
-     * Creates new form InputDeleteEdge
+     * Crea la interfaz
+     * @param graph
+     * @param fileRoute
      */
     public InputDeleteEdge(Grafo graph, String fileRoute) {
         this.graph = graph;
@@ -25,6 +28,9 @@ public class InputDeleteEdge extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
+    /**
+     * Elimina un arco
+     */
     public void deleteEdge(){
         String userA = firstUser.getText();
         if(userA.contains("@")){
@@ -115,7 +121,10 @@ public class InputDeleteEdge extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Conduce a la interfaz de InterfaceMain 
+     * @param evt 
+     */
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         InterfaceMain in1 = new InterfaceMain(graph, fileRoute);
         in1.setVisible(true);
