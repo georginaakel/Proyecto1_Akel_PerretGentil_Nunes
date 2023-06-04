@@ -83,7 +83,7 @@ public class InputEdge extends javax.swing.JFrame {
         back = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -108,6 +108,7 @@ public class InputEdge extends javax.swing.JFrame {
 
         startInput.setBackground(new java.awt.Color(255, 204, 0));
         startInput.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        startInput.setForeground(new java.awt.Color(0, 0, 204));
         startInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startInputActionPerformed(evt);
@@ -117,10 +118,12 @@ public class InputEdge extends javax.swing.JFrame {
 
         endInput.setBackground(new java.awt.Color(255, 204, 0));
         endInput.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        endInput.setForeground(new java.awt.Color(0, 0, 204));
         getContentPane().add(endInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 258, -1));
 
         weightInput.setBackground(new java.awt.Color(255, 204, 0));
         weightInput.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
+        weightInput.setForeground(new java.awt.Color(0, 0, 204));
         weightInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 weightInputActionPerformed(evt);
@@ -146,7 +149,7 @@ public class InputEdge extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
-        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 580, -1, -1));
+        getContentPane().add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(596, 590, 60, -1));
 
         jLabel5.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 204));
@@ -158,8 +161,8 @@ public class InputEdge extends javax.swing.JFrame {
         jLabel6.setText("si deseas crear un nuevo usuario puedes hacerlo en \"Agregar persona\"");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/3.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/3.png"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -228,13 +231,13 @@ public class InputEdge extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fondo;
     private javax.swing.JButton back;
     private javax.swing.JTextField endInput;
     private javax.swing.JButton finish;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
