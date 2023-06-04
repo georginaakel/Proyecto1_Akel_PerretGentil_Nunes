@@ -167,7 +167,10 @@ public class Grafo {
         try{
             Vperson pA = findPersonVnum(personA);
             Vperson pB = findPersonVnum(personB);
-
+            
+            if(!edgeExist(personA, personB, pA) && !edgeExist(personA, personB, pB)){
+                JOptionPane.showMessageDialog(null, "Error: no existe relacion entre ambas personas");
+            }
             List adyListA = pA.getAdyList();
             for (int x = 0; x < adyListA.len(); x++) {
                 Edge e = (Edge) adyListA.get(x);
@@ -177,12 +180,14 @@ public class Grafo {
                     int position = findPositionVnum(pA.getVnum());
                     allPerson.replace(position, pA);
                 }
+                
                 if(e.getEnd() == personA && e.getStart() == personB){
                     adyListA.pop(x);
                     pA.setAdyList(adyListA);
                     int position = findPositionVnum(pA.getVnum());
                     allPerson.replace(position, pA);
                 }
+                
             }
 
             List adyListB = pB.getAdyList();
@@ -194,12 +199,14 @@ public class Grafo {
                     int position = findPositionVnum(pB.getVnum());
                     allPerson.replace(position, pB);
                 }
+               
                 if(e.getEnd() == personA && e.getStart() == personB){
                     adyListB.pop(x);
                     pB.setAdyList(adyListB);
                     int position = findPositionVnum(pB.getVnum());
                     allPerson.replace(position, pB);
                 }
+                
             }
         }
         catch(Exception e){
@@ -272,11 +279,15 @@ public class Grafo {
      * @return número del vertice o null si este no se encuentra
      */
     public int nameToVnum(String name){
-        int position = findPositionName(name);
-        
-        Vperson person = allPerson.get(position);
-        
-        return person.getVnum();
+        try{
+            int position = findPositionName(name);
+            Vperson person = allPerson.get(position);
+            return person.getVnum();
+        }
+        catch(Exception e){
+
+        }
+        return -1;
     }
     
     /**
@@ -285,10 +296,14 @@ public class Grafo {
      * @return nombre del vertice o null si este no se encuentra
      */
     public String VnumToName(int Vnum){
-        for(int x = 0; x < allPerson.len(); x++){
-            if(allPerson.get(x).getVnum() == Vnum){
-                return allPerson.get(x).getName();
+        try{
+            for(int x = 0; x < allPerson.len(); x++){
+                if(allPerson.get(x).getVnum() == Vnum){
+                    return allPerson.get(x).getName();
+                }
             }
+        }
+        catch(Exception e){
         }
         return null;
     }
