@@ -47,7 +47,7 @@ public class InputDeleteEdge extends javax.swing.JFrame {
         userB = "@" + userB;
         int A = graph.nameToVnum(userA);
         int B = graph.nameToVnum(userB);
-        graph.deleteEdge(A, B);              
+        graph.deleteEdge(A, B, 0);              
 
         
     }

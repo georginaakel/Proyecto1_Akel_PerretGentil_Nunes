@@ -163,12 +163,12 @@ public class Grafo {
      * @param personA número de vértice inicial
      * @param personB número de vértice  final
      */
-    public void deleteEdge(int personA, int personB){
+    public void deleteEdge(int personA, int personB, int option){
         try{
             Vperson pA = findPersonVnum(personA);
             Vperson pB = findPersonVnum(personB);
             
-            if(!edgeExist(personA, personB, pA) && !edgeExist(personA, personB, pB)){
+            if(!edgeExist(personA, personB, pA) && !edgeExist(personA, personB, pB) && option == 0){
                 JOptionPane.showMessageDialog(null, "Error: no existe relacion entre ambas personas");
             }
             List adyListA = pA.getAdyList();
@@ -636,8 +636,8 @@ public class Grafo {
             for (int y = 0; y < adyList.len(); y++) {
                 Grafo cGraph = copy();
                 Vperson p2 = (Vperson) adyList.get(y);
-                cGraph.deleteEdge(p1.getVnum(), p2.getVnum());
-                cGraph.deleteEdge(p2.getVnum(), p1.getVnum());
+                cGraph.deleteEdge(p1.getVnum(), p2.getVnum(), 1);
+                cGraph.deleteEdge(p2.getVnum(), p1.getVnum(), 1);
                 int islands = cGraph.countIslandsBFS();
                 cGraph.clearVisited();
 
