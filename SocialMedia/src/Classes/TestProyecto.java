@@ -14,7 +14,7 @@ import GraphicInterface.LoadFile;
 /**
  * Clase principal
  * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
- * @version 31/05/2023
+ * @version 03/06/2023
  */
 public class TestProyecto {
 

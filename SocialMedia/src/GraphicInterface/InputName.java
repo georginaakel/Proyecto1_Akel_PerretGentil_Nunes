@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 /**
  * En esta interfaz se gestionan los usuarios utilizados en el programa
  * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
- * @version 31/05/2023
+ * @version 03/06/2023
  */
 public class InputName extends javax.swing.JFrame {
     private String Vname;
@@ -165,7 +165,10 @@ public class InputName extends javax.swing.JFrame {
     private void nameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameInputActionPerformed
 
     }//GEN-LAST:event_nameInputActionPerformed
-
+    /**
+     * Conduce a la interfaz de InterfaceMain 
+     * @param evt 
+     */
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         this.dispose();
         InterfaceMain inter2 = new InterfaceMain(graph, fileRoute);

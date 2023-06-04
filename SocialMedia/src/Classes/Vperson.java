@@ -7,7 +7,7 @@ import DataStructures.List;
 /**
  * Clase que contiene metodos sobre los objetos Vpersona utilizados en el proyecto
  * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
- * @version 31/05/2023
+ * @version 02/06/2023
  */
 public class Vperson {
     private List<Edge> AdyList;
@@ -80,7 +80,7 @@ public class Vperson {
     }
     
     /** 
-    * Método que retorna un valor booleando dependiendo de si el vetice fue visitado
+    * Método que retorna un valor booleano dependiendo de si el vertice fue visitado
     * @return true o false
     */
     public boolean isVisited() {
@@ -88,8 +88,8 @@ public class Vperson {
     }
     
     /** 
-    * Método que cambia el valor booleando dependiendo de si fue visitado o no
-    * @param visited nuevo valor booleando del vertice
+    * Método que cambia el valor booleano dependiendo de si fue visitado o no
+    * @param visited nuevo valor booleano del vertice
     */
     public void setVisited(boolean visited) {
         this.visited = visited;

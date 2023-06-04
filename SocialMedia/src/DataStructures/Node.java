@@ -7,7 +7,7 @@ package DataStructures;
 
 /**
  * En esta clase se almacenan los nodos y sus métodos, que serán utilizados a lo largo del proyecto
- * @author Juan
+ * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
  * @param <T>
  * @version 23/05/2023
  */

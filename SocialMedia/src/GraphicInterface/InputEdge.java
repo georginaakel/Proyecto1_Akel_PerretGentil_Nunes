@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 /**
  * Esta interfaz tiene la función de agregar arcos dentro del grafo
  * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
- * @version 31/05/2023
+ * @version 03/06/2023
  */
 public class InputEdge extends javax.swing.JFrame {
     private int start;
@@ -172,7 +172,7 @@ public class InputEdge extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_startInputActionPerformed
     /**
-     * Conduce a la interfaz de InterfaceMain despues de crear una ruta
+     * Conduce a la interfaz de InterfaceMain despues de crear una relacion
      * @param evt 
      */
     private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed

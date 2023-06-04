@@ -10,9 +10,9 @@ import Classes.Vperson;
 import javax.swing.JOptionPane;
 
 /**
- * En esta clase se contienen la implementacion de los grafos y sus métodos correspondientes utilizados a lo largo del proyecto
+ * En esta clase se contienen la implementacion de los grafos y sus métodos correspondientes
  * @authors Georgina Akel, Orveo Di Luca, Juan Nunes, Arianne Perret Gentil
- * @version 31/05/2023
+ * @version 03/06/2023
  */
 public class Grafo {
 
@@ -485,7 +485,7 @@ public class Grafo {
     }
     
     /**
-     * Método que vuelve a settear el valor isVisited a true       
+     * Método que vuelve a settear el valor booleano de isVisited       
      */
     public void clearVisited(){
         for (int x = 0; x < allPerson.len(); x++) {
@@ -518,6 +518,10 @@ public class Grafo {
         }
     }
     
+    /**
+     * Método que realiza una copia del grafo
+     * @return nueva copia del grafo
+     */
     public Grafo copy(){
         Grafo newGraph = new Grafo();
         
@@ -596,8 +600,11 @@ public class Grafo {
         return count;
     }
     
-    
-    //Javadoc de esto (contador de puentes)
+
+    /**
+     * Método que realiza un conteo de la cantidad de puentes
+     * @return String los puentes encontrados
+     */
     public String countBridges(){
         String str = "";
         List edges = new List();
