@@ -65,9 +65,12 @@ public class Grafo {
                     run = false;
                 }
             }
-            if(run == true){
+            if(run){
                 allPerson.append(person);
-            }     
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Error: persona ya agregada");
+            }
         }
         return run;
     }
@@ -541,7 +544,7 @@ public class Grafo {
                 int start = e.getStart();
                 int end = e.getEnd();
                 int weight = e.getWeight();
-                newGraph.addEdge(start, end, weight);
+                newGraph.addEdge2(start, end, weight);                              
             }
         }
         return newGraph;
@@ -630,6 +633,53 @@ public class Grafo {
             
         }
         return str;
+    }
+    
+    public void addEdge2(int start, int end, int weight){
+        try{
+            
+            Vperson personStart = allPerson.get(findPositionVnum(start));
+            Vperson personEnd = allPerson.get(findPositionVnum(end));
+            
+            if(start == end){
+                JOptionPane.showMessageDialog(null, "Error: no se admite relacion con un mismo vertice");
+            }
+            
+            else if(weight < 0){
+                JOptionPane.showMessageDialog(null, "Error: valor ingresado en relacion no valido");
+            }
+
+            else if(allPerson.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error: no hay vertices");
+            }
+            
+            else{
+                for(int x = 0; x < allPerson.len(); x++){
+                    int position = x;
+                    Vperson pAux = (Vperson) allPerson.get(x);
+
+                    if(pAux.getVnum() == start){
+                        Edge edge = new Edge(start, end, weight);
+                        edge.setRead(true);
+                        List adyList = pAux.getAdyList();
+                        adyList.append(edge);
+                        pAux.setAdyList(adyList);
+                        allPerson.replace(position, pAux);                             
+                    }
+                    if(pAux.getVnum() == end){
+                        Edge edge = new Edge(start, end, weight);
+                        edge.setRead(false);
+                        List adyList = pAux.getAdyList();
+                        adyList.append(edge);
+                        pAux.setAdyList(adyList);
+                        allPerson.replace(position, pAux);                             
+                    }
+                }
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error: dato ingresado incorrecto");
+        }       
     }
     
 
