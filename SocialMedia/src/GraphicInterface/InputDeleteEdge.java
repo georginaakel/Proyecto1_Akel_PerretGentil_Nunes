@@ -6,6 +6,7 @@
 package GraphicInterface;
 
 import DataStructures.Grafo;
+import javax.swing.JOptionPane;
 
 /**
  * Esta interfaz tiene la función de eliminar arcos dentro del grafo
@@ -31,7 +32,7 @@ public class InputDeleteEdge extends javax.swing.JFrame {
     /**
      * Elimina un arco
      */
-    public void deleteEdge(){
+    public void EdgeD(){
         String userA = firstUser.getText();
         if(userA.contains("@")){
             userA = userA.replace("@", "");
@@ -47,6 +48,8 @@ public class InputDeleteEdge extends javax.swing.JFrame {
         int A = graph.nameToVnum(userA);
         int B = graph.nameToVnum(userB);
         graph.deleteEdge(A, B);              
+
+        
     }
 
     /**
@@ -132,7 +135,10 @@ public class InputDeleteEdge extends javax.swing.JFrame {
     }//GEN-LAST:event_backActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        EdgeD();
+        InterfaceMain in1 = new InterfaceMain(graph, fileRoute);
+        in1.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
